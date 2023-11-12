@@ -1,0 +1,38 @@
+{% extends "base2.html" %}
+{% load static %}
+
+
+
+ 
+{% block content %}
+<form class="sm:w-[50%] forgot-password bg-[#E8EAE3] max-w-[450px] rounded-xl p-5 text-black shadow-2xl shadow-slate-600  mx-auto mt-24">
+    <div class="header text-center mt-3">
+      <span class="title text-3xl font-semibold leading-5 text-black">Şifremi Unuttum</span>
+      <p class="sub-title mt-1 text-base leading-6">Şifre Sıfırlama Tercihinizi Belirtin</p>
+    </div>
+    <div class="reset-option mt-4 mb-3.5 ">
+      <input class="hidden peer" value="email" id="email" name="option" type="radio" checked>
+      <label class="peer-checked:border-mavi cursor-pointer overflow-hidden border border-gray-300 rounded-lg bg-gray-100 flex flex-col items-start justify-between p-4 my-2 transition-all duration-150 ease-in-out " for="email">
+          <span class="reset-title text-lg leading-7 font-semibold text-black">Email ile Sıfırla</span>
+          <span class="reset-sub-title text-xs leading-5">Sıfırlama linki sisteme kayıtlı email adresinize gönderilecektir</span>
+      </label>
+    </div>
+    <div class="reset-option mt-4 mb-3.5">
+      <input class="hidden peer" value="sms" id="sms" name="option" type="radio">
+      <label class="peer-checked:border-mavi cursor-pointer overflow-hidden border border-gray-300 rounded-lg bg-gray-100 flex flex-col items-start justify-between p-4 my-2 transition-all duration-150 ease-in-out " for="sms">
+          <span class="reset-title text-lg leading-7 font-semibold text-black">SMS ile sıfırla</span>
+          <span class="reset-sub-title text-xs leading-5">Sıfırlama linki sisteme kayıtlı telefon numaranıza gönderilecektir</span>
+      </label>
+    </div>
+      <a href="#" title="" class="send-btn no-underline w-full inline-flex items-center justify-center rounded-md bg-mavi text-white py-4 px-12 transition-all duration-150 ease-in-out hover:opacity-90">Linki Gönder</a>
+      <p class="sub-title mt-2">Linki ulaşmadı mı?<span>
+        <button  class="resend text-mavi font-semibold">Tekrar Gönder</button>
+      </span></p>
+  </form>
+
+{% endblock content %}
+
+{% block script %}
+<script src="https://kit.fontawesome.com/cd1c1c92c4.js" crossorigin="anonymous"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+{% endblock script %}

@@ -1,0 +1,54 @@
+
+
+
+
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+{% for anacategory in anacategory %}
+
+<div class="bg-gradient-to-r from-pembe to-lacivert carousel xl:w-[54rem] lg:w-[42rem] md:w-[30rem] sm:w-[18rem] px-16 py-8 bg-opacity-60 rounded-3xl mt-20 mx-auto">
+  <h1 class="text-2xl text-center mb-10 text-white">{{anacategory.ana_category_name}}</h1>
+  <div class="carousel__track" data-carousel-el="track">
+      <div class="carousel__slide">
+          
+          <ul class="slide-group grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {% for altcategory in anacategory.category.all %}
+                <li>
+                  <a href="{% url "dersler" altcategory.slug %}" class="slide-item glide__slide ">
+                      <div class="rounded p-4 shadow-lg transition-all duration-700 hover:scale-110">
+                          <img src="{{altcategory.alt_category_image.url}}" class="w-24 h-24 object-cover rounded-full" alt="JavaScript">
+                          <span class="font-bold">
+                              {{altcategory}}
+                              
+                              
+                          </span>
+                      </div>
+                  </a>
+                </li>
+
+            {% endfor %}
+            
+          {% comment %} {% for altcategory in altcategory %}
+            
+          {% endfor %} {% endcomment %}
+
+        </ul>
+      </div>
+  </div>
+  <div class="carousel__arrows flex justify-between mt-20">
+    <button class="carousel__arrow carousel__arrow--left left-4 duration-300 ease-in-out">
+      <i class="fas fa-angle-left text-2xl text-black"></i>
+  </button>
+  <button class="carousel__arrow carousel__arrow--right right-4 duration-300 ease-in-out">
+      <i class="fas fa-angle-right text-2xl text-black"></i>
+  </button>    
+  </div>
+</div>
+
+{% endfor %}
+
+{% endblock content %}

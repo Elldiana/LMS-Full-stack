@@ -1,0 +1,473 @@
+{% extends "base2.html" %}
+{% load static %}
+
+
+{% block content %}
+{% include "partials/_navbar1.html" %}
+
+        <div class="min-h-screen flex flex-col justify-center items-center">
+
+            <h1 class="text-white text-xl font-bold m-4 text-center">Kurslarım</h1>
+
+            <div class="md:px-4 md:grid md:grid-cols-2 xl:grid-cols-3 gap-5 space-y-4 md:space-y-0">
+    
+                <!-- HTML 1 -->
+                {% for ders in dersler %}
+                <div
+                    class="max-w-sm bg-white px-6 pt-6 pb-2 rounded-xl shadow-lg transform hover:scale-105 transition duration-600">
+                    <div class="mb-3">
+                        <span class="p-1 text-sm bg-green-200 text-green-800 rounded">{{ders.egitim_seviyesi}}</span>
+                    </div>
+                    <div class="relative">
+                        <img class="w-full h-20 rounded-md" src="{{ders.egitim_image.url}}"  alt="Renkler">
+                        <p
+                            class="absolute top-0 bg-green-600 text-gray-800 font-semibold py-1 px-3 rounded-br-lg rounded-tl-lg">
+                            {{ders.egitim_ucreti}} ₺</p>
+                    </div>
+                    <h1 class="mt-4 text-gray-800 text-2xl font-bold cursor-pointer">{{ders.egitimler_title}}</h1>
+                    <div class="my-4">
+                        <div class="flex space-x-1 items-center">
+                            <i class="fa-regular fa-clock h-6 w-6 text-mavi"></i>
+                            <p class="mb-1.5">{{ders.egitim_suresi}}</p>
+                        </div>
+                        <div class="flex space-x-1 items-center">
+                            <i class="fa-regular fa-user h-6 w-6 text-mavi"></i>
+                            <p class="mb-1.5">{{ders.egitmen.first_name}}</p>
+                        </div>
+                        <div class="flex space-x-1 items-center">
+                            <i class="fa-solid fa-code h-6 w-6 text-mavi"></i>
+                            <p class="mb-1.5">{{ders.egitim_alt_kategori}}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+    
+                {% comment %} <!--HTML 2 -->
+                <div
+                    class="max-w-sm bg-white px-6 pt-6 pb-2 rounded-xl shadow-lg transform hover:scale-105 transition duration-600">
+    
+                    <div class="mb-3 text-xl">
+                        <span class="p-1 text-sm bg-yellow-200 text-yellow-800 rounded">Orta Seviye</span>
+                    </div>
+                    <div class="relative">
+                        <img class="w-full rounded-xl" src="{% static "img/html4.jpg" %}" alt="Colors">
+                        <p
+                            class="absolute top-0 bg-green-600 text-gray-800 font-semibold py-1 px-3 rounded-br-lg rounded-tl-lg">
+                            6 000 TL</p>
+                        <p
+                            class="absolute top-0 right-0 bg-green-600 text-gray-800 font-semibold py-1 px-3 rounded-tr-lg rounded-bl-lg">
+                            %10 Indirim</p>
+                    </div>
+                    <h1 class="mt-4 text-gray-800 text-2xl font-bold cursor-pointer">Orta Seviye HTML Dersi </h1>
+                    <div class="my-4">
+                        <div class="flex space-x-1 items-center">
+                            <i class="fa-regular fa-clock h-6 w-6 text-mavi"></i>
+                            <p class="mb-1.5">2saat 34dk</p>
+                        </div>
+                        <div class="flex space-x-1 items-center">
+                            <i class="fa-regular fa-user h-6 w-6 text-mavi"></i>
+                            <p class="mb-1.5">Mehmet Çalışkan</p>
+                        </div>
+                        <div class="flex space-x-1 items-center">
+                            <i class="fa-solid fa-code h-6 w-6 text-mavi"></i>
+                            <p class="mb-1.5">HTML</p>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- HTML 3 -->
+                <div
+                    class="max-w-sm bg-white px-6 pt-6 pb-2 rounded-xl shadow-lg transform hover:scale-105 transition duration-600">
+    
+                    <div class="mb-3 text-xl">
+                        <span class="p-1 text-sm bg-red-200 text-red-800 rounded">İleri Seviye</span>
+                    </div>
+                    <div class="relative">
+                        <img class="w-full rounded-xl" src="{% static "img/html6.jpg" %}" alt="Colors">
+                        <p
+                            class="absolute top-0 bg-green-600 text-gray-800 font-semibold py-1 px-3 rounded-br-lg rounded-tl-lg">
+                            9 000 TL</p>
+                        <p
+                            class="absolute top-0 right-0 bg-green-600 text-gray-800 font-semibold py-1 px-3 rounded-tr-lg rounded-bl-lg">
+                            %20 Indirim</p>
+                    </div>
+                    <h1 class="mt-4 text-gray-800 text-2xl font-bold cursor-pointer">İleri Seviye HTML Dersi</h1>
+                    <div class="my-4">
+                        <div class="flex space-x-1 items-center">
+                            <i class="fa-regular fa-clock h-6 w-6 text-mavi"></i>
+                            <p class="mb-1.5">2saat 34dk</p>
+                        </div>
+                        <div class="flex space-x-1 items-center">
+                            <i class="fa-regular fa-user h-6 w-6 text-mavi"></i>
+                            <p class="mb-1.5">Mehmet Çalışkan</p>
+                        </div>
+                        <div class="flex space-x-1 items-center">
+                            <i class="fa-solid fa-code h-6 w-6 text-mavi"></i>
+                            <p class="mb-1.5">HTML</p>
+                        </div>
+                    </div>
+                </div>
+    
+    
+    
+                <!-- CSS 1 -->
+                <div
+                    class="max-w-sm bg-white px-6 pt-6 pb-2 rounded-xl shadow-lg transform hover:scale-105 transition duration-600">
+                    <div class="mb-3 text-xl">
+                        <span class="p-1 text-sm bg-green-200 text-green-800 rounded">Temel Seviye</span>
+                    </div>
+                    <div class="relative">
+                        <img class="w-full rounded-md" src="{% static "img/img2.jpeg" %}" alt="Renkler">
+                        <p
+                            class="absolute top-0 bg-green-600 text-gray-800 font-semibold py-1 px-3 rounded-br-lg rounded-tl-lg">
+                            5 000 TL</p>
+                    </div>
+                    <h1 class="mt-4 text-gray-800 text-2xl font-bold cursor-pointer">Temel Seviye HTML & CSS Dersi</h1>
+                    <div class="my-4">
+                        <div class="flex space-x-1 items-center">
+                            <i class="fa-regular fa-clock h-6 w-6 text-mavi"></i>
+                            <p class="mb-1.5">2saat 34dk</p>
+                        </div>
+                        <div class="flex space-x-1 items-center">
+                            <i class="fa-regular fa-user h-6 w-6 text-mavi"></i>
+                            <p class="mb-1.5">Mehmet Çalışkan</p>
+                        </div>
+                        <div class="flex space-x-1 items-center">
+                            <i class="fa-solid fa-code h-6 w-6 text-mavi"></i>
+                            <p class="mb-1.5">HTML & CSS</p>
+                        </div>
+                    </div>
+                </div>
+    
+                <!--HTML 2 -->
+                <div
+                    class="max-w-sm bg-white px-6 pt-6 pb-2 rounded-xl shadow-lg transform hover:scale-105 transition duration-600">
+    
+                    <div class="mb-3 text-xl">
+                        <span class="p-1 text-sm bg-yellow-200 text-yellow-800 rounded">Orta Seviye</span>
+                    </div>
+                    <div class="relative">
+                        <img class="w-full rounded-xl" src="{% static "img/img3.jpeg" %}" alt="Colors">
+                        <p
+                            class="absolute top-0 bg-green-600 text-gray-800 font-semibold py-1 px-3 rounded-br-lg rounded-tl-lg">
+                            6 000 TL</p>
+                        <p
+                            class="absolute top-0 right-0 bg-green-600 text-gray-800 font-semibold py-1 px-3 rounded-tr-lg rounded-bl-lg">
+                            %10 Indirim</p>
+                    </div>
+                    <h1 class="mt-4 text-gray-800 text-2xl font-bold cursor-pointer">Orta Seviye HTML & CSS Dersi </h1>
+                    <div class="my-4">
+                        <div class="flex space-x-1 items-center">
+                            <i class="fa-regular fa-clock h-6 w-6 text-mavi"></i>
+                            <p class="mb-1.5">2saat 34dk</p>
+                        </div>
+                        <div class="flex space-x-1 items-center">
+                            <i class="fa-regular fa-user h-6 w-6 text-mavi"></i>
+                            <p class="mb-1.5">Mehmet Çalışkan</p>
+                        </div>
+                        <div class="flex space-x-1 items-center">
+                            <i class="fa-solid fa-code h-6 w-6 text-mavi"></i>
+                            <p class="mb-1.5">HTML & CSS</p>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- HTML 3 -->
+                <div
+                    class="max-w-sm bg-white px-6 pt-6 pb-2 rounded-xl shadow-lg transform hover:scale-105 transition duration-600">
+    
+                    <div class="mb-3 text-xl">
+                        <span class="p-1 text-sm bg-red-200 text-red-800 rounded">İleri Seviye</span>
+                    </div>
+                    <div class="relative">
+                        <img class="w-full rounded-xl" src="{% static "img/img5.jpeg" %}" alt="Colors">
+                        <p
+                            class="absolute top-0 bg-green-600 text-gray-800 font-semibold py-1 px-3 rounded-br-lg rounded-tl-lg">
+                            9 000 TL</p>
+                        <p
+                            class="absolute top-0 right-0 bg-green-600 text-gray-800 font-semibold py-1 px-3 rounded-tr-lg rounded-bl-lg">
+                            %20 Indirim</p>
+                    </div>
+                    <h1 class="mt-4 text-gray-800 text-2xl font-bold cursor-pointer">İleri Seviye JavaScript Dersi</h1>
+                    <div class="my-4">
+                        <div class="flex space-x-1 items-center">
+                            <i class="fa-regular fa-clock h-6 w-6 text-mavi"></i>
+                            <p class="mb-1.5">2saat 34dk</p>
+                        </div>
+                        <div class="flex space-x-1 items-center">
+                            <i class="fa-regular fa-user h-6 w-6 text-mavi"></i>
+                            <p class="mb-1.5">Mehmet Çalışkan</p>
+                        </div>
+                        <div class="flex space-x-1 items-center">
+                            <i class="fa-solid fa-code h-6 w-6 text-mavi"></i>
+                            <p class="mb-1.5">JavaScript</p>
+                        </div>
+                    </div>
+                </div> {% endcomment %}
+    
+            </div>
+        </div>
+
+        {% comment %} Yeni Video Yükleme {% endcomment %}
+
+        <div class="mt-4 mb-14 w-full flex flex-col items-center justify-center">
+
+            <h1 class="text-white text-xl font-bold mt-4 mb-4 text-center">Yeni Video Ekle</h1>
+    
+          <div class="bg-mavi text-center rounded-lg w-full sm:w-1/2">
+              <div id="video-container" class="p-4 relative">
+              <form action="" method="POST">
+                {% csrf_token %}
+              
+              {{ videoForm.video_player_title }}
+              {{ videoForm.video_aciklama }}
+              {{ videoForm.video_suresi }}
+              {{ videoForm.video_id }}
+              {{ videoForm.video_egitim }}
+    
+              
+              <button type="submit" id="load-video" class="mt-4 bg-mor w-1/2 text-white text-center p-2 m-2 hover:bg-pembe hover:text-mavi rounded-lg cursor-pointer">Yükle</button>
+            </form>
+        </div>
+          </div>
+        </div>
+    
+{% endblock content %}
+
+
+
+
+
+{% comment %} {% extends "base2.html" %}
+{% load static %}
+
+
+{% block content %}
+{% include "partials/_navbar1.html" %}
+<div class="new-course mt-14 h-screen m-auto w-1/2 max-[500px]:p-0 ">
+
+    <div class="w-full flex flex-col items-center justify-center">
+
+        <h1 class="text-white text-xl font-bold mt-4 mb-4 text-center">Yeni Video Ekle</h1>
+
+      <div class="bg-mavi text-center shadow-pembe shadow-md rounded-lg max-[500px]:shadow-none">
+          <div id="video-container" class="relative w-full aspect-w-16 aspect-h-9">
+          </div>
+          <form action="" method="POST">
+            {% csrf_token %}
+          
+          {{ videoForm.video_player_title }}
+          {{ videoForm.video_aciklama }}
+          {{ videoForm.video_suresi }}
+          {{ videoForm.video_id }}
+          {{ videoForm.video_egitim }}
+
+          
+          <button type="submit" id="load-video" class="mt-4 bg-mor w-2/5 text-white text-center p-2 m-2 hover:bg-pembe hover:text-mavi rounded-lg cursor-pointer">Yükle</button>
+        </form>
+      </div>
+    </div>
+    </div>
+
+
+        <div class="min-h-screen flex flex-col justify-center items-center py-20">
+
+            <h1 class="text-white text-xl font-bold m-4 mt-4 text-center">Tüm Kurslar</h1>
+
+            <div class="md:px-4 md:grid md:grid-cols-2 xl:grid-cols-3 gap-5 space-y-4 md:space-y-0">
+    
+                <!-- HTML 1 -->
+                <div
+                    class="max-w-sm bg-white px-6 pt-6 pb-2 rounded-xl shadow-lg transform hover:scale-105 transition duration-600">
+                    <div class="mb-3 text-xl">
+                        <span class="p-1 text-sm bg-green-200 text-green-800 rounded">Temel Seviye</span>
+                    </div>
+                    <div class="relative">
+                        <img class="w-full rounded-md" src="{% static "img/html3.jpg" %}" alt="Renkler">
+                        <p
+                            class="absolute top-0 bg-green-600 text-gray-800 font-semibold py-1 px-3 rounded-br-lg rounded-tl-lg">
+                            5 000 TL</p>
+                    </div>
+                    <h1 class="mt-4 text-gray-800 text-2xl font-bold cursor-pointer">Temel Seviye HTML Dersi</h1>
+                    <div class="my-4">
+                        <div class="flex space-x-1 items-center">
+                            <i class="fa-regular fa-clock h-6 w-6 text-mavi"></i>
+                            <p class="mb-1.5">2saat 34dk</p>
+                        </div>
+                        <div class="flex space-x-1 items-center">
+                            <i class="fa-regular fa-user h-6 w-6 text-mavi"></i>
+                            <p class="mb-1.5">Mehmet Çalışkan</p>
+                        </div>
+                        <div class="flex space-x-1 items-center">
+                            <i class="fa-solid fa-code h-6 w-6 text-mavi"></i>
+                            <p class="mb-1.5">HTML</p>
+                        </div>
+                    </div>
+                </div>
+    
+                <!--HTML 2 -->
+                <div
+                    class="max-w-sm bg-white px-6 pt-6 pb-2 rounded-xl shadow-lg transform hover:scale-105 transition duration-600">
+    
+                    <div class="mb-3 text-xl">
+                        <span class="p-1 text-sm bg-yellow-200 text-yellow-800 rounded">Orta Seviye</span>
+                    </div>
+                    <div class="relative">
+                        <img class="w-full rounded-xl" src="{% static "img/html4.jpg" %}" alt="Colors">
+                        <p
+                            class="absolute top-0 bg-green-600 text-gray-800 font-semibold py-1 px-3 rounded-br-lg rounded-tl-lg">
+                            6 000 TL</p>
+                        <p
+                            class="absolute top-0 right-0 bg-green-600 text-gray-800 font-semibold py-1 px-3 rounded-tr-lg rounded-bl-lg">
+                            %10 Indirim</p>
+                    </div>
+                    <h1 class="mt-4 text-gray-800 text-2xl font-bold cursor-pointer">Orta Seviye HTML Dersi </h1>
+                    <div class="my-4">
+                        <div class="flex space-x-1 items-center">
+                            <i class="fa-regular fa-clock h-6 w-6 text-mavi"></i>
+                            <p class="mb-1.5">2saat 34dk</p>
+                        </div>
+                        <div class="flex space-x-1 items-center">
+                            <i class="fa-regular fa-user h-6 w-6 text-mavi"></i>
+                            <p class="mb-1.5">Mehmet Çalışkan</p>
+                        </div>
+                        <div class="flex space-x-1 items-center">
+                            <i class="fa-solid fa-code h-6 w-6 text-mavi"></i>
+                            <p class="mb-1.5">HTML</p>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- HTML 3 -->
+                <div
+                    class="max-w-sm bg-white px-6 pt-6 pb-2 rounded-xl shadow-lg transform hover:scale-105 transition duration-600">
+    
+                    <div class="mb-3 text-xl">
+                        <span class="p-1 text-sm bg-red-200 text-red-800 rounded">İleri Seviye</span>
+                    </div>
+                    <div class="relative">
+                        <img class="w-full rounded-xl" src="{% static "img/html6.jpg" %}" alt="Colors">
+                        <p
+                            class="absolute top-0 bg-green-600 text-gray-800 font-semibold py-1 px-3 rounded-br-lg rounded-tl-lg">
+                            9 000 TL</p>
+                        <p
+                            class="absolute top-0 right-0 bg-green-600 text-gray-800 font-semibold py-1 px-3 rounded-tr-lg rounded-bl-lg">
+                            %20 Indirim</p>
+                    </div>
+                    <h1 class="mt-4 text-gray-800 text-2xl font-bold cursor-pointer">İleri Seviye HTML Dersi</h1>
+                    <div class="my-4">
+                        <div class="flex space-x-1 items-center">
+                            <i class="fa-regular fa-clock h-6 w-6 text-mavi"></i>
+                            <p class="mb-1.5">2saat 34dk</p>
+                        </div>
+                        <div class="flex space-x-1 items-center">
+                            <i class="fa-regular fa-user h-6 w-6 text-mavi"></i>
+                            <p class="mb-1.5">Mehmet Çalışkan</p>
+                        </div>
+                        <div class="flex space-x-1 items-center">
+                            <i class="fa-solid fa-code h-6 w-6 text-mavi"></i>
+                            <p class="mb-1.5">HTML</p>
+                        </div>
+                    </div>
+                </div>
+    
+    
+    
+                <!-- CSS 1 -->
+                <div
+                    class="max-w-sm bg-white px-6 pt-6 pb-2 rounded-xl shadow-lg transform hover:scale-105 transition duration-600">
+                    <div class="mb-3 text-xl">
+                        <span class="p-1 text-sm bg-green-200 text-green-800 rounded">Temel Seviye</span>
+                    </div>
+                    <div class="relative">
+                        <img class="w-full rounded-md" src="{% static "img/img2.jpeg" %}" alt="Renkler">
+                        <p
+                            class="absolute top-0 bg-green-600 text-gray-800 font-semibold py-1 px-3 rounded-br-lg rounded-tl-lg">
+                            5 000 TL</p>
+                    </div>
+                    <h1 class="mt-4 text-gray-800 text-2xl font-bold cursor-pointer">Temel Seviye HTML & CSS Dersi</h1>
+                    <div class="my-4">
+                        <div class="flex space-x-1 items-center">
+                            <i class="fa-regular fa-clock h-6 w-6 text-mavi"></i>
+                            <p class="mb-1.5">2saat 34dk</p>
+                        </div>
+                        <div class="flex space-x-1 items-center">
+                            <i class="fa-regular fa-user h-6 w-6 text-mavi"></i>
+                            <p class="mb-1.5">Mehmet Çalışkan</p>
+                        </div>
+                        <div class="flex space-x-1 items-center">
+                            <i class="fa-solid fa-code h-6 w-6 text-mavi"></i>
+                            <p class="mb-1.5">HTML & CSS</p>
+                        </div>
+                    </div>
+                </div>
+    
+                <!--HTML 2 -->
+                <div
+                    class="max-w-sm bg-white px-6 pt-6 pb-2 rounded-xl shadow-lg transform hover:scale-105 transition duration-600">
+    
+                    <div class="mb-3 text-xl">
+                        <span class="p-1 text-sm bg-yellow-200 text-yellow-800 rounded">Orta Seviye</span>
+                    </div>
+                    <div class="relative">
+                        <img class="w-full rounded-xl" src="{% static "img/img3.jpeg" %}" alt="Colors">
+                        <p
+                            class="absolute top-0 bg-green-600 text-gray-800 font-semibold py-1 px-3 rounded-br-lg rounded-tl-lg">
+                            6 000 TL</p>
+                        <p
+                            class="absolute top-0 right-0 bg-green-600 text-gray-800 font-semibold py-1 px-3 rounded-tr-lg rounded-bl-lg">
+                            %10 Indirim</p>
+                    </div>
+                    <h1 class="mt-4 text-gray-800 text-2xl font-bold cursor-pointer">Orta Seviye HTML & CSS Dersi </h1>
+                    <div class="my-4">
+                        <div class="flex space-x-1 items-center">
+                            <i class="fa-regular fa-clock h-6 w-6 text-mavi"></i>
+                            <p class="mb-1.5">2saat 34dk</p>
+                        </div>
+                        <div class="flex space-x-1 items-center">
+                            <i class="fa-regular fa-user h-6 w-6 text-mavi"></i>
+                            <p class="mb-1.5">Mehmet Çalışkan</p>
+                        </div>
+                        <div class="flex space-x-1 items-center">
+                            <i class="fa-solid fa-code h-6 w-6 text-mavi"></i>
+                            <p class="mb-1.5">HTML & CSS</p>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- HTML 3 -->
+                <div
+                    class="max-w-sm bg-white px-6 pt-6 pb-2 rounded-xl shadow-lg transform hover:scale-105 transition duration-600">
+    
+                    <div class="mb-3 text-xl">
+                        <span class="p-1 text-sm bg-red-200 text-red-800 rounded">İleri Seviye</span>
+                    </div>
+                    <div class="relative">
+                        <img class="w-full rounded-xl" src="{% static "img/img5.jpeg" %}" alt="Colors">
+                        <p
+                            class="absolute top-0 bg-green-600 text-gray-800 font-semibold py-1 px-3 rounded-br-lg rounded-tl-lg">
+                            9 000 TL</p>
+                        <p
+                            class="absolute top-0 right-0 bg-green-600 text-gray-800 font-semibold py-1 px-3 rounded-tr-lg rounded-bl-lg">
+                            %20 Indirim</p>
+                    </div>
+                    <h1 class="mt-4 text-gray-800 text-2xl font-bold cursor-pointer">İleri Seviye JavaScript Dersi</h1>
+                    <div class="my-4">
+                        <div class="flex space-x-1 items-center">
+                            <i class="fa-regular fa-clock h-6 w-6 text-mavi"></i>
+                            <p class="mb-1.5">2saat 34dk</p>
+                        </div>
+                        <div class="flex space-x-1 items-center">
+                            <i class="fa-regular fa-user h-6 w-6 text-mavi"></i>
+                            <p class="mb-1.5">Mehmet Çalışkan</p>
+                        </div>
+                        <div class="flex space-x-1 items-center">
+                            <i class="fa-solid fa-code h-6 w-6 text-mavi"></i>
+                            <p class="mb-1.5">JavaScript</p>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+{% endblock content %} {% endcomment %}

@@ -1,0 +1,65 @@
+{% extends "base2.html" %}
+{% load static %}
+
+{% block content %}
+{% if messages %}
+    <div class="w-4/6 mx-auto">
+      <ul class="messages bg-[#7277ab] text-2xl text-white border border-gray-300 p-4 my-4 rounded-md flex justify-center items-center">
+            {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+
+  
+<a href="{% url "indexPage" %}" title="Kutty Home Page" class="flex items-center justify-start sm:justify-center mt-8 mb-5">
+  <img src="{% static "img/neos.png" %}" alt="" class="h-48 mr-4" >
+   </a>
+<div class="mx-auto w-[450px] h-[380px] rounded-2xl border border-white bg-[#7277ab]">
+ 
+    <div class="flex mx-auto flex-col gap-2 p-8">
+        <p class="text-center text-2xl text-white mb-4">Şifre Değiştir</p>
+        <!-- changermotdepasse.html -->
+        <form method="POST">
+            {% csrf_token %}
+            <div class="z-0 relative">
+                {{ form.current_password }}
+                <i class="fa-regular fa-eye absolute top-[20%] right-[5%] cursor-pointer text-white" id="eye"></i>
+            </div>
+
+            {{ form.new_password }}
+
+            {{ form.confirm_password }}
+
+            <button class="flex justify-center mx-auto mt-5 w-36 cursor-pointer rounded-md bg-white border border-lacivert px-4 py-2 text-center text-sm font-semibold uppercase text-lacivert transition duration-200 ease-in-out hover:bg-green-700 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-700 focus-visible:ring-offset-2 active:scale-95">ONAYLA</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}
+
+
+{% block script %}
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://kit.fontawesome.com/cd1c1c92c4.js" crossorigin="anonymous"></script>
+  <script>
+    const passwordInput = document.querySelector("#password-showpass")
+const eye = document.querySelector("#eye")
+
+function showpass() {
+  if(this.classList.contains('fa-eye')){
+    this.classList.remove('fa-eye')
+    this.classList.add('fa-eye-slash')
+    passwordInput.setAttribute('type','text')
+  }
+  else{
+    this.classList.remove('fa-eye-slash')
+    this.classList.add('fa-eye')
+    passwordInput.setAttribute('type','password')
+  }
+}
+eye.addEventListener('click', showpass)
+
+
+  </script>
+{% endblock script %}

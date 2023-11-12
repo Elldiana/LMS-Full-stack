@@ -1,0 +1,150 @@
+{% extends "base2.html" %}
+{% load static %}
+
+
+
+ 
+{% block content %}
+<section class="bg-gradient-to-t from-lacivert via-mavi to-mor shadow-2xl p-4 flex justify-end items-center w-full h-16 space-x-2">
+    <ul class="flex space-x-4">
+        <li class="text-white hover:text-pembe"><a href="{% url "egitimlerimiz" %}">Kurslar</a></li>
+        <li class="text-white hover:text-pembe"><a href="{% url "mesajlar" %}">İletişim</a></li>
+        <li class="relative group">
+            <i class="fa-regular fa-bell fa-sm cursor-pointer text-white hover:text-pembe group-hover:text-pembe" id="bellIcon"></i>
+            <div id="popupDiv" class="w-40 h-24 bg-white border p-2 absolute hidden top-10 border-mor rounded transform -translate-x-1/2">
+                <h2 class="text-xl text-center mb-2 font-bold text-mor">Bildirimler</h2>
+                <p class="text-center text-mavi">Bildirim yok</p>
+            </div>
+            </li>
+            </ul>
+            <div class="user-icon relative flex items-center justify-center w-16 h-16 group" id="userIcon">
+                <div id="icon" class="w-10 h-10 flex items-center justify-center bg-blue-500 text-white font-semibold text-xl rounded-full ml-2 cursor-pointer">A</div>
+                <ul class="w-52 h-48 p-6 absolute hidden bg-white border space-y-2 top-16 right-4 border-mor rounded text-mavi" id="userMenu">
+                    <li><a href="{% url "ogrenciLogin" %}">Öğrenci</a></li>
+                    
+                    <li><a href="{% url "changermotdepasse" %}">Hesap Ayarları</a></li>
+                   
+                    <li><a href="{% url "editProfile" %}">Profili Düzenle</a></li>
+                    
+                    <li><a href="#">Oturumu Kapat</a></li>
+                    
+                </ul>
+            </div>
+                            
+    
+</section>    
+
+
+<div class="mb-8">
+    
+    <div class="add-course mt-8 bg-mavi text-white h-36 flex flex-col justify-around items-center w-full m-auto border border-mor shadow-md shadow-pembe rounded-lg p-4 min-[400px]:w-4/5 md:flex-row md:h-44">
+
+        <p>Kurs Oluşturma Adımına Geç</p>
+        <button class="text-center h-16 w-1/2 rounded border-transparent bg-mor hover:bg-white hover:text-mor font-medium text-white md:w-1/3" onclick="window.location.href='{% url "videoUpload" %}'">
+         Video Yükle
+        </button>
+
+    </div>
+    
+
+    <div class="course-banner mt-8 bg-mavi text-white flex flex-col justify-around items-center w-full m-auto border border-mor shadow-md shadow-pembe rounded-lg p-4 min-[400px]:w-4/5 md:flex-row lg:h-52">
+
+        <div class="img-container">
+
+            <img src="{% static "img/engaging-course.jpg" %}" alt="course" class="w-28 h-28 rounded-lg">
+
+        </div>
+
+        <div class="text-center text-container w-2/3 md:text-start">
+
+            <h2 class="text-xl font-bold mt-4 md:mt-0">İlgi Çekici Bir Kurs Oluşturun</h2><br>
+
+            <p class="text-center md:text-start">İster yıllardır, ister ilk defa eğitim veriyor olun, ilgi çekici bir kurs oluşturabilirsiniz. Nereden başlarsanız başlayın, bir üst 
+                seviyeye çıkmanıza yardımcı olacak kaynakları ve en iyi uygulamaları sizin için bir araya getirdik.</p>
+
+        </div>
+
+    </div>
+
+
+    <div class="info-div flex flex-col w-full m-auto min-[400px]:w-4/5 md:flex-row">
+
+    <div class="info-1 mt-8 bg-mavi text-white flex justify-center items-center w-full border border-mor shadow-md shadow-pembe rounded-lg p-4 md:w-3/5 md:h-52">
+
+        <div class="img-container">
+
+            <img src="{% static "img/video-creation.jpg" %}" alt="video-creation" class="w-28 h-28 rounded-lg">
+
+        </div>
+
+        <div class="text-container w-2/3 p-6">
+
+            <h2 class="text-xl font-bold">Bir Video İle Başlayın</h2><br>
+
+            <p class="text-start">Kaliteli video içeriğine sahip dersler, kursunuzu farklılaştırabilir.</p>
+
+        </div>
+
+    </div>
+
+    <div class="ml-10"></div>
+
+    <div class="info-2 mt-8 bg-mavi w-full text-white flex justify-center items-center border border-mor shadow-md shadow-pembe rounded-lg p-4 md:w-3/5 md:h-52">
+
+        <div class="text-container w-2/3">
+
+            <h2 class="text-xl font-bold">Hedef Kitlenizi Oluşturun</h2><br>
+
+            <p class="text-start">Hedef kitlenizi oluşturarak kursunuzu başarıya hazırlayın.</p>
+
+        </div>
+
+        <div class="img-container">
+
+            <img src="{% static "img/build-audience.jpg" %}" alt="audience" class="w-28 h-28 rounded-lg">
+
+        </div>
+
+    </div>
+
+    </div>
+
+    </div>
+
+{% endblock content %}
+{% include "partials/_footer.html" %}
+{% block script %}
+<script
+src="https://kit.fontawesome.com/53467607bb.js"
+crossorigin="anonymous"
+></script>
+<script>
+  // Eğitmen Profil Sayfası
+
+const bellIcon = document.getElementById("bellIcon");
+
+const popupDiv = document.getElementById("popupDiv");
+
+bellIcon.addEventListener("mouseover", () => {
+
+popupDiv.classList.remove("hidden");
+});
+
+bellIcon.addEventListener("mouseout", () => {
+
+popupDiv.classList.add("hidden");
+});
+
+const userIcon = document.getElementById("userIcon");
+const userMenu = document.getElementById("userMenu");
+
+userIcon.addEventListener("mouseover", () => {
+userMenu.classList.remove("hidden"); 
+});
+
+userIcon.addEventListener("mouseout", () => {
+userMenu.classList.add("hidden"); 
+});
+
+</script>
+{% endblock script %}

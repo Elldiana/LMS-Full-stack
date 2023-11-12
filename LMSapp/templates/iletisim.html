@@ -1,0 +1,320 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="flex flex-wrap md:p-20 bg-lacivert text-mavi ">
+
+  <!-- ! Sosyal Medya Kutusu -->
+
+  <div
+    class="w-full lg:w-1/2 flex flex-wrap p-5 bg-gradient-to-b from-pembe to-lacivert text-mavi lg:bg-gradient-to-r lg:from-lacivert lg:to-pembe  rounded-none rounded-t-none md:rounded-t-3xl lg:rounded-l-3xl lg:rounded-r-none"
+  >
+    <div class="w-full lg:w-1/2 flex flex-col gap-5">
+      
+      <!-- ! Başlık -->
+
+      <div
+        data-aos="flip-left"
+        data-aos-easing="ease-out-cubic"
+        data-aos-duration="3000"
+        class="flex items-center justify-center h-10 md:h-14 md:w-48 rounded-2xl"
+      >
+        <span
+          class="text-white text-md md:text-xl font-bold animate-pulse duration-100"
+          >Sosyal Medyada Biz</span
+        >
+      </div>
+
+      <div class="mt-5 flex justify-center md:justify-start">
+        <a
+          class="text-xs md:text-base lg:text-lg text-white hover:text-pembe flex items-center"
+          href="https://www.linkedin.com/company/neos-yaz%C4%B1l%C4%B1m/"
+          target="_blank"
+        >
+          <i
+            class="mr-5 text-lg md:text-4xl fa-brands fa-linkedin text-white hover:text-pembe transition-colors duration-300 cursor-pointer transform scale-100 hover:scale-150"
+          ></i>
+          <span class="md:block lg:inline-block text-center"
+            >Neos Yazılım Akademi</span
+          >
+        </a>
+      </div>
+
+      <div class="flex justify-center md:justify-start">
+        <a
+          class="text-xs md:text-base lg:text-lg text-white hover:text-pembe flex items-center"
+          href="https://www.instagram.com/neos_yazilim/"
+          target="_blank"
+        >
+          <i
+            class="mr-5 text-lg md:text-4xl lg:text-4xl fa-brands fa-square-instagram text-white hover:text-pembe transition duration-300  transform scale-100 hover:scale-150"
+          ></i>
+          <span class="md:block lg:inline-block text-center"
+            >neos_yazilim</span
+          >
+        </a>
+      </div>
+
+      <div class="flex justify-center md:justify-start">
+        <a
+          class="text-xs md:text-base lg:text-lg text-white hover:text-pembe flex items-center"
+          href="https://www.facebook.com/neosyazilimakademi/"
+          target="_blank"
+        >
+          <i
+            class="mr-5 text-lg md:text-4xl fa-brands fa-square-facebook text-white hover:text-pembe transition duration-300  transform scale-100 hover:scale-150"
+          ></i>
+          <span class="md:block lg:inline-block text-center"
+            >neosyazilim akademi</span
+          >
+        </a>
+      </div>
+
+      <div class="flex justify-center md:justify-start">
+        <a
+          class="text-xs md:text-base lg:text-lg text-white hover:text-pembe flex items-center"
+          href="https://twitter.com/neos_yazilim"
+          target="_blank"
+        >
+          <i
+            class="mr-5 text-lg md:text-4xl fa-brands fa-square-x-twitter text-white hover:text-pembe transition duration-300  transform scale-100 hover:scale-150"
+          ></i>
+          <span class="md:block lg:inline-block text-center"
+            >neos_yazilim</span
+          >
+        </a>
+      </div>
+
+      <div class="flex justify-center md:justify-start">
+        <a
+          class="text-xs md:text-base lg:text-lg text-white hover:text-pembe flex items-center"
+          href="https://www.youtube.com/channel/UCqK3l-AUa3KgG8WvqDeln1g"
+          target="_blank"
+        >
+          <i
+            class="mr-5 text-lg md:text-4xl fa-brands fa-square-youtube text-white hover:text-pembe transition duration-300  transform scale-100 hover:scale-150"
+          ></i>
+          <span class="md:block lg:inline-block text-center"
+            >neosyazilim</span
+          >
+        </a>
+      </div>
+
+      <div class="flex justify-center md:justify-start">
+        <a
+          class="text-xs md:text-base lg:text-lg text-white hover:text-pembe flex items-center"
+          href="https://api.whatsapp.com/send/?phone=905013205358&text&type=phone_number&app_absent=0"
+          target="_blank"
+        >
+          <i
+            class="mr-5 text-lg md:text-4xl fa-brands fa-square-whatsapp text-white hover:text-pembe transition duration-300  transform scale-100 hover:scale-150"
+          ></i>
+          <span class="md:block lg:inline-block text-center"
+            >+90 501 320 53 58</span
+          >
+        </a>
+      </div>
+
+      <div class="flex justify-center md:justify-start">
+        <a
+          class="text-xs md:text-base lg:text-lg text-white hover:text-pembe flex items-center"
+          href=""
+          target="_blank"
+        >
+          <i
+            class="mr-5 text-lg md:text-4xl fa-solid fa-envelope text-white hover:text-pembe transition duration-300  transform scale-100 hover:scale-150"
+          ></i>
+          <span class="md:block lg:inline-block text-center"
+            >neosiletisim@gmail.com</span
+          >
+        </a>
+      </div>
+    </div>
+
+    <!-- ! Img -->
+
+    <div
+      class="w-1/2 flex items-center justify-center lg:items-center lg:flex-col mx-auto"
+    >
+      <div class="mt-20" data-aos="zoom-in" data-aos-duration="3000">
+        <img
+          class="w-auto h-auto lg:w-full lg:h-auto hover:scale-125 duration-300"
+          src="{% static "img/neos.png" %}"
+          alt=""
+        >
+      </div>
+    </div>
+  </div>
+
+  <!-- ! Bize Ulaşın Kutusu -->
+
+  <div
+    class="w-full lg:w-1/2 p-5 bg-gradient-to-t from-pembe to-lacivert text-mavi lg:bg-gradient-to-r lg:from-pembe lg:to-lacivert rounded-none rounded-b-none md:rounded-b-3xl lg:rounded-r-3xl lg:rounded-l-none"
+  >
+    <!-- ! Başlık -->
+
+    <div
+      data-aos="flip-left"
+      data-aos-easing="ease-out-cubic"
+      data-aos-duration="3000"
+      class="flex items-center justify-center h-10 md:h-14 md:w-44 rounded-2xl"
+    >
+      <span
+        class="text-white text-md md:text-xl font-bold animate-pulse duration-100"
+        >Bize Ulaşın</span
+      >
+    </div>
+
+    <p class="pt-5 pb-5 text-lg text-white">
+      Aşağıdaki formu doldurarak bizimle iletişime geçebilirsiniz.
+    </p>
+
+    <!-- ! Input -->
+
+    <div class="mb-4">
+      <label for="username" class="block text-white text-m font-bold mb-2"
+        >İsim:</label
+      >
+      <input
+        type="text"
+        id="username"
+        name="username"
+        class="w-full px-3 py-2 rounded-lg focus:outline-none focus:ring focus:border-blue-500"
+        placeholder="İsminizi yazınız"
+        required
+      >
+    </div>
+
+    <div class="mb-4">
+      <label for="mail" class="block text-white text-m font-bold mb-2"
+        >E-mail:</label
+      >
+      <input
+        type="text"
+        id="mail"
+        class="w-full px-3 py-2 rounded-lg focus:outline-none focus:ring focus:border-blue-500"
+        placeholder="Mail adresinizi yazınız"
+        required
+      >
+    </div>
+
+    <div class="mb-4">
+      <label for="message" class="block text-white text-m font-bold mb-2"
+        >Mesaj:</label
+      >
+      <input
+        type="text"
+        id="message"
+        class="w-full px-3 py-2 pt-16 pb-16 rounded-lg focus:outline-none focus:ring focus:border-blue-500"
+        placeholder="Mesajınızı yazınız"
+        required
+      >
+    </div>
+
+    <div class="mb-1">
+      <button
+        type="submit"
+        class="w-full bg-lacivert hover:bg-mor text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline-blue focus:ring-2 focus:ring-blue-300"
+      >
+        Gönder
+      </button>
+    </div>
+  </div>
+
+  <!-- ! Şubelerimiz -->
+
+  <div
+    class="w-full lg:w-1/2 p-10 bg-gradient-to-t from-pembe to-lacivert text-mavi lg:bg-gradient-to-r lg:from-pembe lg:to-lacivert mt-10 rounded-none rounded-t-none md:rounded-t-3xl lg:rounded-l-3xl lg:rounded-r-none"
+  >
+    <div
+      data-aos="flip-left"
+      data-aos-easing="ease-out-cubic"
+      data-aos-duration="3000"
+      class="flex items-center justify-center h-10 md:h-14 md:w-48 rounded-2xl"
+    >
+      <span
+        class="text-white text-md md:text-xl font-bold animate-pulse duration-100"
+        >Şubelerimiz</span
+      >
+    </div>
+
+    <ul class="text-white">
+      
+      <li class="mt-4">
+        <h3 class="font-bold">İstanbul Merkez Şube</h3>
+        <div
+            class="text-base text-white hover:text-lacivert cursor-pointer"
+            onclick="changeMap('https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3012.0867508737156!2d28.874886999999998!3d40.979581200000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cabd361d9f2bcd%3A0x109cda61c48e4b76!2sNeos%20Yaz%C4%B1l%C4%B1m%20Akademi!5e0!3m2!1sen!2str!4v1696887019061!5m2!1sen!2str')"
+        >
+            <i class="fa-solid fa-location-dot fa-beat mr-3 text-lacivert fa-lg"></i>Cevizlik Mahallesi Hüsreviye Sokak No: 12 Bakırköy/İstanbul
+        </div>
+      </li>
+
+      <li class="mt-4">
+        <h3 class="font-bold">Ankara Şube</h3>
+        <div
+            class="text-base text-white hover:text-lacivert cursor-pointer"
+            onclick="changeMap('https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d191.25342229838438!2d32.8568395!3d39.9177908!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d34fabb0e8fcef%3A0x9eb91e7af4654030!2zTWXFn3J1dGl5ZXQsIE1lxZ9ydXRpeWV0IENkLiBObzoxOCwgMDY0MjAgw4dhbmtheWEvQW5rYXJh!5e0!3m2!1sen!2str!4v1696886906204!5m2!1sen!2str')"
+        >
+            <i class="fa-solid fa-location-dot fa-beat mr-3 text-lacivert fa-lg"></i>Meşrutiyet Caddesi Meşrutiyet Mahallesi No: 18 Kat:2 Çelik İş
+            Hanı Kızılay/Ankara
+        </div>
+      </li>
+
+      <li class="mt-4">
+        <h3 class="font-bold">İzmir Şube</h3>
+        <div
+            class="text-base text-white hover:text-lacivert cursor-pointer"
+            onclick="changeMap('https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1562.843026507535!2d27.1393784!3d38.4256196!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14bbd8f73155fa69%3A0xe17659b3555aad89!2zxLBzbWV0IEthcHRhbiwgSMO8cnJpeWV0IEJsdi4gTm86MTEsIDM1MjEwIEtvbmFrL8Swem1pcg!5e0!3m2!1sen!2str!4v1696886668482!5m2!1sen!2str')"
+        >
+            <i class="fa-solid fa-location-dot fa-beat mr-3 text-lacivert fa-lg"></i>Hürriyet Bulvarı No: 11 Kat: 2 Konak/İzmir
+        </div>
+      </li>
+    
+      <li class="mt-4">
+        <h3 class="font-bold">Bursa Şube</h3>
+        <div
+            class="text-base text-white hover:text-lacivert cursor-pointer"
+            onclick="changeMap('https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3047.8709059417442!2d29.061360799999996!3d40.1896863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14ca3e09a5de3a4f%3A0x777aecd8a38c62dd!2sBerk%202%20Plaza!5e0!3m2!1sen!2str!4v1696886253891!5m2!1sen!2str')"
+        >
+            <i class="fa-solid fa-location-dot fa-beat mr-3 text-lacivert fa-lg"></i>Doğanbey Caddesi Berk 2 Plaza No:3 Kat:10 Demokrasi Meydanı Osmangazi Bursa
+        </div>
+    </li>
+    
+    </ul>
+  </div>
+
+  <!-- ! Harita -->
+
+  <div
+    class="iframe w-full lg:w-1/2 p-10 bg-gradient-to-b from-pembe to-lacivert text-mavi lg:bg-gradient-to-r lg:from-lacivert lg:to-pembe text-center mt-0 rounded-none rounded-b-none md:rounded-b-3xl lg:rounded-r-3xl lg:rounded-l-none lg:mt-10"
+  >
+    <iframe
+      class="rounded-3xl max-w-full"
+      src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6024.114336176249!2d28.875509!3d40.980229!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cabd361d9f2bcd%3A0x109cda61c48e4b76!2sNeos%20Yaz%C4%B1l%C4%B1m%20Akademi!5e0!3m2!1str!2str!4v1696161721012!5m2!1str!2str"
+      style="border: 0"
+      height="400"
+      width="900"
+      loading="lazy"
+      allowfullscreen=""
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+  </div>
+</div>
+{% endblock content %}   
+
+{% block script %}
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+<script>
+
+function changeMap(haritaLinki) {
+let iframe = document.querySelector(".iframe iframe");
+iframe.src = haritaLinki;
+}
+
+</script>
+{% endblock script %}

@@ -1,0 +1,97 @@
+{% extends "base2.html" %}
+{% load static %}
+
+
+
+ 
+{% block content %}
+<section class="bg-gradient-to-t from-lacivert via-mavi to-mor shadow-xl p-4 flex justify-between items-center w-full h-16 space-x-2">
+
+    <div class="iletisim text-start justify-start">
+      <h1 class="cursor-pointer text-sm sm:text-base text-white hover:text-pembe">Mesajlar</h1>
+    </div>
+     
+     <div class="flex items-center justify-end">
+  
+      <ul class="flex space-x-4 text-sm sm:text-base">
+          <li class="text-white hover:text-pembe"><a href="./carousel.html">Kurslar</a></li>
+          <li class="text-white hover:text-pembe">İletişim</li>
+          <li class="relative group">
+              <i class="fa-regular fa-bell fa-sm cursor-pointer text-white hover:text-pembe group-hover:text-pembe" id="bellIcon"></i>
+              <div id="popupDiv" class="w-40 h-24 bg-white border p-2 absolute hidden top-10 border-mor rounded transform -translate-x-1/2">
+                  <h2 class="text-xl text-center mb-2 font-bold text-mor">Bildirimler</h2>
+                  <p class="text-center text-mavi">Bildirim yok</p>
+              </div>
+              </li>
+              </ul>
+              <div class="user-icon relative flex items-center justify-center w-16 h-16 group" id="userIcon">
+                  <div id="icon" class="w-10 h-10 flex items-center justify-center bg-blue-500 text-white font-semibold text-xl rounded-full ml-2 cursor-pointer">A</div>
+                  <ul class="w-52 h-48 p-6 absolute hidden bg-white border space-y-2 top-16 right-4 border-mor rounded text-mavi" id="userMenu">
+                      <li><a href="{% url "ogrenciLogin" %}">Öğrenci</a></li>
+                      <li><a href="{% url "changermotdepasse" %}">Hesap Ayarları</a></li>
+  
+                      <li><a href="{% url "editProfile" %}">Profili Düzenle</a></li>
+                      
+                      <li><a href="#">Oturumu Kapat</a></li>
+                      
+                  </ul>
+              </div>
+  
+      </div>
+                              
+  </section>
+  
+  <!-- Section -->
+  
+  <div class="mt-8 p-4 m-auto w-4/5 h-screen">
+  
+    <h1 class="text-white text-base sm:text-3xl font-bold">Mesajlar</h1>
+  
+    <div class="message-div w-1/2 text-center m-auto mt-10">
+  
+      <img class="m-auto mb-6" src="{% static "img/empty-mailbox-v2.jpg" %}" alt="mailbox-img">
+  
+      <h2 class="text-white font-bold text-base sm:text-xl">Yeni mesaj yok</h2>
+    
+      <p class="text-sm sm:text-base text-white">Doğrudan mesajlar; öğrencilerinizle ve diğer eğitmenlerle özel olarak iletişim kurmanız içindir. Bu mesajları burada görürsünüz.</p>
+      
+    </div>
+  
+  </div> 
+  {% endblock content %}
+  {% include "partials/_footer.html" %}
+  {% block script %}
+<script
+src="https://kit.fontawesome.com/53467607bb.js"
+crossorigin="anonymous"
+></script>
+<script>
+  // Eğitmen Profil Sayfası
+
+const bellIcon = document.getElementById("bellIcon");
+
+const popupDiv = document.getElementById("popupDiv");
+
+bellIcon.addEventListener("mouseover", () => {
+
+popupDiv.classList.remove("hidden");
+});
+
+bellIcon.addEventListener("mouseout", () => {
+
+popupDiv.classList.add("hidden");
+});
+
+const userIcon = document.getElementById("userIcon");
+const userMenu = document.getElementById("userMenu");
+
+userIcon.addEventListener("mouseover", () => {
+userMenu.classList.remove("hidden"); 
+});
+
+userIcon.addEventListener("mouseout", () => {
+userMenu.classList.add("hidden"); 
+});
+
+</script>
+{% endblock script %}

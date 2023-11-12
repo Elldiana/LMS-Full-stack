@@ -1,0 +1,75 @@
+{% load static %}
+
+<nav class="bg-gradient-to-t from-lacivert via-mavi to-mor transition duration-2000 ease-in-out" id="navbar">
+    <div class="flex flex-wrap items-center justify-between mx-auto p-4">
+    <a href="{% url "indexPage" %}" class="flex items-center">
+        <img src="{% static "img/neos.png" %}" class="h-24 mr-3"/>
+    </a>
+    <div class="flex items-center md:order-2 mt-3 relative">
+      <!-- Dil seçimi düğmesi -->
+      <button type="button" data-dropdown-toggle="language-dropdown-menu" class="inline-flex items-center font-medium justify-center px-4 py-2 text-sm rounded-lg cursor-pointer hover:bg-mavi text-white">
+        <div class="w-5 h-3 mr-2 rounded-full">
+          <img src="{% static "img/tr.png" %}" alt="">
+        </div>
+        <p>Türkçe (TR)</p>
+      </button>
+      <div class="icons-container flex items-center space-x-2">
+        <div class="user-icon relative flex items-center justify-center w-16 h-16 group" id="userIcon">
+          <div id="icon" class="w-10 h-10 flex items-center justify-center bg-blue-500 text-white font-semibold text-xl rounded-full ml-2 cursor-pointer">A</div>
+          <ul class="w-52 h-52 p-6 absolute hidden bg-white border space-y-2 top-16 right-4 border-mor rounded text-mavi" id="userMenu">
+              <li><a href="{% url "changermotdepasse" %}">Hesap Ayarları</a></li>
+              <hr>
+              <li><a href="{% url "sepet" %}">Sepet</a></li>
+              <hr>
+              <li><a href="{% url "editProfile" %}">Profili Düzenle</a></li>
+              <hr>
+              <li><a href="#">Oturumu Kapat</a></li>
+          </ul>
+      </div>
+          <div class="flex items-center">
+            <i id="search-icon" class="fas fa-search text-white hover:text-mor cursor-pointer"></i>
+            <div id="search-bar" class="hidden ml-2">
+                <input type="text" placeholder="Arama yap..." class="border rounded p-1" />
+                <button type="submit" class="bg-lacivert text-white rounded p-1 hover:bg-pembe cursor-pointer">Ara</button>
+            </div>
+        </div>
+            <a class="fas fa-shopping-cart text-white hover:text-mor cursor-pointer" ></a>
+      </div>
+      <!-- Dropdown -->
+      <div  id="language-dropdown-menu" class="z-50 hidden my-4 text-base list-none rounded-lg shadow absolute mt-24">
+        <ul class="py-2 font-medium">
+          <li>
+            <a href="{% url "logout" %}" class="block px-4 py-2 text-sm text-white hover:bg-mavi " role="menuitem">
+              <div class="inline-flex items-center">
+                <img src="{% static "img/eng.png" %}" alt="" class="w-5 h-3 mr-2">
+                English (EN)
+              </div>
+            </a>
+          </li>              
+        </ul>
+      </div>
+      <button data-collapse-toggle="navbar-language" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden hover:bg-mavi" aria-controls="navbar-language" aria-expanded="false">
+        <svg class="w-5 h-5">
+            <path stroke="currentColor" d="M1 1h15M1 7h15M1 13h15"/>
+        </svg>
+    </button>
+    </div>
+    
+    <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-language">
+      <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0">
+        <li>
+          <a href="{% url "indexPage" %}" class="block py-2 pl-3 pr-4 text-white hover:text-mor rounded md:bg-transparent md:p-0" aria-current="page">Anasayfa</a>
+        </li>
+        <li>
+          <a href="{% url "hakkimizda" %}" class="block py-2 pl-3 pr-4 text-white hover:text-pembe rounded md:bg-transparent md:p-0" aria-current="page">Hakkımızda</a>
+        </li>
+        <li>
+          <a href="{% url "iletisim" %}" class="block py-2 pl-3 pr-4 text-white hover:text-pembe rounded md:bg-transparent md:p-0" aria-current="page">İletişim</a>
+        </li>
+        <li>
+          <a href="{% url "egitimlerimiz" %}" class="block py-2 pl-3 pr-4 text-white hover:text-pembe rounded md:bg-transparent md:p-0" aria-current="page">Eğitimlerimiz</a>
+        </li>
+     </ul>
+    </div>        
+   </div>
+  </nav>

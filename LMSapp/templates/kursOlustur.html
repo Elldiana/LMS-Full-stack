@@ -1,0 +1,41 @@
+{% extends "base2.html" %}
+{% load static %}
+
+{% block content %}
+{% include "partials/_navbar1.html" %}
+
+{% if messages %}
+    <div class="w-4/6 mx-auto">
+      <ul class="messages bg-[#7277ab] text-2xl text-white border border-gray-300 p-4 my-4 rounded-md flex justify-center items-center">
+            {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+
+<div class="mt-14 w-full h-screen">
+
+<h1 class="text-white text-xl font-bold mt-4 mb-4 text-center"> Yeni Kurs Oluştur </h1>
+
+<div class="form-div p-8 mt-8 m-auto w-full md:w-1/2 bg-mavi rounded">
+
+<form class="text-center" action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {{courseForm.egitimler_title}}
+    {{courseForm.egitim_icerigi}}
+    {{courseForm.egitim_ana_kategori}}
+    {{courseForm.egitim_alt_kategori}}
+    {{courseForm.egitim_seviyesi}}
+    {{courseForm.egitim_suresi}}
+    {{courseForm.egitim_ucreti}}
+    {{courseForm.egitim_image}}
+    <button type="submit" id="load-video" class="mt-4 bg-mor w-2/5 text-sm text-white text-center p-2 m-2 hover:bg-pembe hover:text-mavi rounded-lg cursor-pointer sm:text-base">Kurs Oluştur</button>
+  </form>
+
+</div>
+
+</div>
+
+{% endblock content %}

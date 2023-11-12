@@ -1,0 +1,1024 @@
+{% extends "base2.html" %}
+{% load static %}
+
+{% block content %}
+{% include "partials/_navbar1.html" %}
+  
+  
+  <!-- ! Başlık -->
+  
+  <div class="flex items-center justify-center m-20">
+    <span class="text-3xl text-white animate-pulse duration-100">Eğitimlerim</span>
+  </div>
+  
+  <!-- ! CARDS -->
+  
+  <div class="gap-10 flex flex-wrap justify-center ">
+     
+  <!-- ! Card-1 -->
+  {% if odemeler %}
+  {% for odeme in odemeler %}
+  {% for egitim in odeme.egitimler.all %}
+  <div class="max-w-xs bg-white rounded-lg overflow-hidden relative group hover:bg-gray-300 hover:scale-110 transition-transform duration-300 mb-20">
+      <img src="{{egitim.egitim.egitim_image.url}}" alt="Ders Video Kapak" class=" opacity-100 group-hover:opacity-50 transition-opacity" style="width: 300px; height: 200px;">
+      <div class="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity group-hover:opacity-100">
+        <a href="{% url "videoPlayer" egitim.egitim.id %}" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3l14 9-14 9V3z" />
+          </svg>
+        </a>
+      </div>
+      <div class="p-4">
+        <h2 class="text-lg font-bold">{{egitim.egitim.egitimler_title}}</h2>
+        <p class="text-black font-bold">{{egitim.egitim.egitim_suresi}}</p>
+        <p class="text-gray-600">{{egitim.egitim.egitmen.first_name}}</p>
+          <div class="text-lg text-pembe-400">
+            <p class="text-sm text-gray-600 flex justify-end mt-5">Oylama bırakın</p>
+            <div class="flex justify-end">
+            <span class="cursor-pointer hover:text-pembe" @click="rate(1)">★</span>
+            <span class="cursor-pointer hover:text-pembe" @click="rate(2)">★</span>
+            <span class="cursor-pointer hover:text-pembe" @click="rate(3)">★</span>
+            <span class="cursor-pointer hover:text-pembe" @click="rate(4)">★</span>
+            <span class="cursor-pointer hover:text-pembe" @click="rate(5)">★</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      {% endfor %}      
+    </div>
+    
+{% endif %}
+  
+    
+
+  
+  <!-- ! Öneriler Carousel -->
+{% comment %}   
+  <div class="bg-gradient-to-r from-pembe to-lacivert carousel xl:w-[96rem] lg:w-[72rem] md:w-[54rem] sm:w-[42rem] px-16 py-8 bg-opacity-60 rounded-3xl mt-20 mx-auto">
+    <h1 class="text-3xl text-white animate-pulse duration-100 text-center mb-10">Sizin için önerilenler</h1>
+    <div class="carousel__track" data-carousel-el="track-1">
+        <div class="carousel__slide">
+            <ul class="slide-group grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+  
+                <li class="slide-item glide__slide">
+                    <div class="p-4 shadow-lg transition-all duration-700 hover:scale-110">
+                        <img src="{% static "img/ders-card-2.jpg" %}" class="w-68 h-40 object-cover" alt="JavaScript">
+                        <span class="text-white text-lg font-bold">
+                            HTML-CSS
+                        </span>
+                        <p class="text-white font-bold">120 Saat</p>
+                        <p class="text-sm text-white">Fırat Dalkılıç</p>
+                        <p class="text-white">Fiyat: $49.99</p>
+                        <div class="bg-mor hover:bg-white text-white hover:text-mor h-10 w-40 mt-4">
+                          <button class="px-4 py-2"><a href="{% url "sepet" %}"> Sepete Ekle </a>
+                          <i class="fas fa-shopping-cart cursor-pointer"></i>
+                          </button>
+                        </div>
+                    </div>
+                </li>
+  
+                <li class="slide-item glide__slide">
+                    <div class="p-4 shadow-lg transition-all duration-700 hover:scale-110">
+                        <img src="{% static "img/ders-card-7.png" %}" alt="HTML" class="w-68 h-40 object-cover">
+                        <span class="text-white text-lg font-bold">
+                            React
+                        </span>
+                        <p class="text-white font-bold">120 Saat</p>
+                        <p class="text-sm text-white">Fırat Dalkılıç</p>
+                        <p class="text-white">Fiyat: $49.99</p>
+                        <div class="bg-mor hover:bg-white text-white hover:text-mor h-10 w-40 mt-4">
+                          <button class="px-4 py-2"><a href="{% url "sepet" %}"> Sepete Ekle </a>
+                          <i class="fas fa-shopping-cart cursor-pointer"></i>
+                          </button>
+                        </div>
+                    </div>
+                </li>
+  
+                <li class="slide-item glide__slide">
+                    <div class="p-4 shadow-lg transition-all duration-700 hover:scale-110">
+                        <img src="{% static "img/ders-card-6.jpg" %}" class="w-68 h-40 object-cover" alt="CSS">
+                        <span class="text-white text-lg font-bold">
+                            Python-Django
+                        </span>
+                        <p class="text-white font-bold">120 Saat</p>
+                        <p class="text-sm text-white">Fırat Dalkılıç</p>
+                        <p class="text-white">Fiyat: $49.99</p>
+                        <div class="bg-mor hover:bg-white text-white hover:text-mor h-10 w-40 mt-4">
+                          <button class="px-4 py-2"><a href="{% url "sepet" %}"> Sepete Ekle </a>
+                          <i class="fas fa-shopping-cart cursor-pointer"></i>
+                          </button>
+                        </div>
+                    </div>
+                </li>
+  
+              <li class="slide-item glide__slide">
+                  <div class="p-4 shadow-lg transition-all duration-700 hover:scale-110">
+                      <img src="{% static "img/ders-card-7.png" %}" alt="HTML" class="w-68 h-40 object-cover">
+                      <span class="text-white text-lg font-bold">
+                          React
+                      </span>
+                      <p class="text-white font-bold">120 Saat</p>
+                      <p class="text-sm text-white">Fırat Dalkılıç</p>
+                      <p class="text-white">Fiyat: $49.99</p>
+                      <div class="bg-mor hover:bg-white text-white hover:text-mor h-10 w-40 mt-4">
+                        <button class="px-4 py-2"><a href="{% url "sepet" %}"> Sepete Ekle </a>
+                        <i class="fas fa-shopping-cart cursor-pointer"></i>
+                        </button>
+                      </div>
+                  </div>
+              </li>
+  
+              <li class="slide-item glide__slide">
+                  <div class="p-4 shadow-lg transition-all duration-700 hover:scale-110">
+                      <img src="{% static "img/ders-card-6.jpg" %}" class="w-68 h-40 object-cover" alt="CSS">
+                      <span class="text-white text-lg font-bold">
+                          Python-Django
+                      </span>
+                      <p class="text-white font-bold">120 Saat</p>
+                      <p class="text-sm text-white">Fırat Dalkılıç</p>
+                      <p class="text-white">Fiyat: $49.99</p>
+                      <div class="bg-mor hover:bg-white text-white hover:text-mor h-10 w-40 mt-4">
+                        <button class="px-4 py-2"><a href="{% url "sepet" %}"> Sepete Ekle </a>
+                        <i class="fas fa-shopping-cart cursor-pointer"></i>
+                        </button>
+                      </div>
+                  </div>
+              </li>
+            </ul>
+        </div>
+    </div>
+    <div class="carousel__arrows flex justify-between mt-20">
+        <button class="carousel__arrow carousel__arrow--left-1 left-4 duration-300 ease-in-out">
+            <div class="h-9 w-9 bg-gradient-to-t from-mavi via-pembe to-mavi rounded-xl flex justify-center items-center my-auto p-4 shadow-lg transition-all duration-700 hover:scale-110">
+                <i class="fas fa-angle-left text-2xl text-black"></i>
+            </div>
+        </button>
+        <button class="carousel__arrow carousel__arrow--right-1 right-4 duration-300 ease-in-out">
+            <div class="h-9 w-9 bg-gradient-to-t from-mavi via-pembe to-mavi rounded-xl flex justify-center items-center my-auto p-4 shadow-lg transition-all duration-700 hover:scale-110">
+                <i class="fas fa-angle-right text-2xl text-black"></i>
+            </div>
+        </button>
+    </div>
+  </div>
+  
+  
+  <!-- ! Sık Arananlar Carousel -->
+  
+  <div class="bg-gradient-to-r from-pembe to-lacivert carousel xl:w-[96rem] lg:w-[72rem] md:w-[54rem] sm:w-[42rem] px-16 py-8 bg-opacity-60 rounded-3xl mt-20 mx-auto">
+    <h1 class="text-3xl text-white animate-pulse duration-100 text-center mb-10">Sık Aranan Başlıklar</h1>
+    <div class="carousel__track" data-carousel-el="track-2">
+        <div class="carousel__slide">
+            <ul class="slide-group grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <li class="slide-item glide__slide">
+                  <a href="#">
+                    <div class="rounded-2xl bg-lacivert hover:bg-white text-white hover:text-lacivert p-4 shadow-lg transition-all duration-700 hover:scale-110">
+                      <span class="text-lg font-bold">
+                            <a href="{% url "egitimlerimiz" %}"> HTML-CSS </a>
+                        </span>
+                    </div>
+                  </a>
+                </li>
+              
+  
+                <li class="slide-item glide__slide">
+                  <a href="#">
+                    <div class="rounded-2xl bg-lacivert hover:bg-white text-white hover:text-lacivert p-4 shadow-lg transition-all duration-700 hover:scale-110">
+                        <span class="text-lg font-bold">
+                            <a href="{% url "egitimlerimiz" %}">React</a>
+                        </span>
+                    </div>
+                  </a>
+                </li>
+  
+                <li class="slide-item glide__slide">
+                  <a href="#">
+                    <div class="rounded-2xl bg-lacivert hover:bg-white text-white hover:text-lacivert p-4 shadow-lg transition-all duration-700 hover:scale-110">
+                      <span class="text-lg font-bold">
+                        <a href="{% url "egitimlerimiz" %}">Python-Django </a>
+                        </span>
+                    </div>
+                    </a>
+                </li>
+  
+                <li class="slide-item glide__slide">
+                  <a href="#">
+                    <div class="rounded-2xl bg-lacivert hover:bg-white text-white hover:text-lacivert p-4 shadow-lg transition-all duration-700 hover:scale-110">
+                      <span class="text-lg font-bold">
+                            <a href="{% url "egitimlerimiz" %}"> Full Stack Development </a>
+                        </span>
+                    </div>
+                  </a>
+                </li>
+  
+                <li class="slide-item glide__slide">
+                  <a href="#">
+                    <div class="rounded-2xl bg-lacivert hover:bg-white text-white hover:text-lacivert p-4 shadow-lg transition-all duration-700 hover:scale-110">
+                      <span class="text-lg font-bold">
+                        <a href="{% url "egitimlerimiz" %}"> Siber Güvenlik </a>
+                      </span>
+                  </div>
+                </a>
+              </li>
+  
+              <li class="slide-item glide__slide">
+                <a href="#">
+                  <div class="rounded-2xl bg-lacivert hover:bg-white text-white hover:text-lacivert p-4 shadow-lg transition-all duration-700 hover:scale-110">
+                    <span class="text-lg font-bold">
+                        <a href="{% url "egitimlerimiz" %}">  Yapay Zeka </a>
+                      </span>
+                  </div>
+                </a>
+              </li>
+            </ul>
+        </div>
+    </div>
+    <div class="carousel__arrows flex justify-between mt-20">
+        <button class="carousel__arrow carousel__arrow--left-2 left-4 duration-300 ease-in-out">
+            <div class="h-9 w-9 bg-gradient-to-t from-mavi via-pembe to-mavi rounded-xl flex justify-center items-center my-auto p-4 shadow-lg transition-all duration-700 hover:scale-110">
+                <i class="fas fa-angle-left text-2xl text-black"></i>
+            </div>
+        </button>
+        <button class="carousel__arrow carousel__arrow--right-2 right-4 duration-300 ease-in-out">
+            <div class="h-9 w-9 bg-gradient-to-t from-mavi via-pembe to-mavi rounded-xl flex justify-center items-center my-auto p-4 shadow-lg transition-all duration-700 hover:scale-110">
+                <i class="fas fa-angle-right text-2xl text-black"></i>
+            </div>
+        </button>
+    </div>
+  </div> {% endcomment %}
+</div>
+
+  
+  {% include "partials/_footer.html" %}  
+  {% endblock content %}
+
+  
+  {% block script %}
+
+  
+  <script> 
+    AOS.init(); 
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>    
+    <script src="https://kit.fontawesome.com/53467607bb.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+    
+      // ! Navbar
+    window.addEventListener('scroll', function () {
+      const navbar = document.querySelector('nav');
+      if (window.scrollY > 0) {
+        navbar.classList.remove('bg-gradient-to-t', 'from-lacivert', 'via-mavi', 'to-mor')
+        navbar.classList.add('bg-gradient-to-r', 'from-lacivert', 'via-mavi', 'to-mor');
+        navbar.classList.add('fixed', 'top-0', 'left-0', 'w-full', 'z-10'); // Navbar'ı sabitleyin
+      } else {
+        navbar.classList.add('bg-gradient-to-t', 'from-lacivert', 'via-mavi', 'to-mor');
+        navbar.classList.remove('fixed', 'top-0', 'left-0', 'w-full', 'z-10'); // Navbar'ı çözün
+      }
+    });
+    
+    document.addEventListener("DOMContentLoaded", function() {
+      const searchIcon = document.getElementById("search-icon");
+      const searchBar = document.getElementById("search-bar");
+    
+      searchIcon.addEventListener("click", function() {
+          if (searchBar.classList.contains("hidden")) {
+              searchBar.classList.remove("hidden");
+          } else {
+              searchBar.classList.add("hidden");
+          }
+      });
+    });
+    
+    const searchIcon = document.querySelector('.fa-search');
+    const searchForm = document.querySelector('#search-form');
+    
+    searchIcon.addEventListener('click', function() {
+      searchForm.classList.toggle('hidden');
+    });
+    
+    function toggleLanguageDropdown() {
+      var dropdown = document.getElementById("language-dropdown-menu");
+      dropdown.classList.toggle("hidden");
+    }
+    
+    function toggleMobileMenu() {
+      var mobileMenu = document.getElementById("navbar-language");
+      mobileMenu.classList.toggle("hidden");
+    }
+    
+    var languageDropdownToggle = document.querySelector("[data-dropdown-toggle=language-dropdown-menu]");
+    languageDropdownToggle.addEventListener("click", toggleLanguageDropdown);
+    
+    var mobileMenuToggle = document.querySelector("[data-collapse-toggle=navbar-language]");
+    mobileMenuToggle.addEventListener("click", toggleMobileMenu);
+    
+    
+    // ! Öğrenci Girişi Dropdown
+    const userIcon = document.getElementById("userIcon");
+    const userMenu = document.getElementById("userMenu");
+    
+    userIcon.addEventListener("mouseenter", () => {
+        userMenu.classList.remove("hidden"); 
+    });
+    
+    userIcon.addEventListener("mouseleave", () => {
+        userMenu.classList.add("hidden"); 
+    });
+    
+    
+    // ! Öğrenci Girişi Carousel
+    document.addEventListener("DOMContentLoaded", function () {
+      // İlk slider için elemanları seç
+      const track1 = document.querySelector('[data-carousel-el="track-1"]');
+      const slides1 = track1.querySelectorAll('.slide-item');
+      const prevButton1 = document.querySelector('.carousel__arrow--left-1');
+      const nextButton1 = document.querySelector('.carousel__arrow--right-1');
+    
+      // İkinci slider için elemanları seç
+      const track2 = document.querySelector('[data-carousel-el="track-2"]');
+      const slides2 = track2.querySelectorAll('.slide-item');
+      const prevButton2 = document.querySelector('.carousel__arrow--left-2');
+      const nextButton2 = document.querySelector('.carousel__arrow--right-2');
+      
+      let currentIndex1 = 0;
+      let currentIndex2 = 0;
+      const slidesPerPage = 4;
+    
+      const maxIndex1 = Math.ceil(slides1.length / slidesPerPage) - 1;
+      const maxIndex2 = Math.ceil(slides2.length / slidesPerPage) - 1;
+      
+      function showSlide1(index) {
+        const start = index * slidesPerPage;
+        const end = start + slidesPerPage;
+        
+        slides1.forEach((slide, i) => {
+          if (i >= start && i < end) {
+            slide.style.display = "block";
+          } else {
+            slide.style.display = "none";
+          }
+        });
+      }
+      
+      function showSlide2(index) {
+        const start = index * slidesPerPage;
+        const end = start + slidesPerPage;
+        
+        slides2.forEach((slide, i) => {
+          if (i >= start && i < end) {
+            slide.style.display = "block";
+          } else {
+            slide.style.display = "none";
+          }
+        });
+      }
+      
+      showSlide1(currentIndex1);
+      showSlide2(currentIndex2);
+      
+      prevButton1.addEventListener("click", function () {
+        if (currentIndex1 > 0) {
+          currentIndex1--;
+          showSlide1(currentIndex1);
+        }
+      });
+      
+      nextButton1.addEventListener("click", function () {
+        if (currentIndex1 < maxIndex1) {
+          currentIndex1++;
+          showSlide1(currentIndex1);
+        }
+      });
+    
+      prevButton2.addEventListener("click", function () {
+        if (currentIndex2 > 0) {
+          currentIndex2--;
+          showSlide2(currentIndex2);
+        }
+      });
+      
+      nextButton2.addEventListener("click", function () {
+        if (currentIndex2 < maxIndex2) {
+          currentIndex2++;
+          showSlide2(currentIndex2);
+        }
+      });
+    });
+    </script>  
+{% endblock script %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} {% extends "base2.html" %}
+{% load static %}
+
+
+
+ 
+{% block content %}
+{% include "partials/_navbarS.html" %}
+  
+  
+  <!-- ! Başlık -->
+  
+  <div class="flex items-center justify-center m-20">
+    <span class="text-3xl text-white animate-pulse duration-100">Kaldığınız yerden devam edin</span>
+  </div>
+  
+  <!-- ! CARDS -->
+  
+  <div class="gap-10 flex flex-wrap justify-center ">
+    
+  <!-- ! Card-1 -->
+  <div class="max-w-xs bg-white rounded-lg overflow-hidden relative group hover:bg-gray-300 hover:scale-110 transition-transform duration-300">
+      <img src="{% static "img/ders-card-1.png" %}" alt="Ders Video Kapak" class="w-full opacity-100 group-hover:opacity-50 transition-opacity">
+      <div class="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity group-hover:opacity-100">
+        <a href="{% url "videoPlayer" %}">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3l14 9-14 9V3z" />
+          </svg>
+        </a>
+      </div>
+      <div class="p-4">
+        <h2 class="text-lg font-bold">Ful Stack Web Development</h2>
+        <p class="text-black font-bold">120 Saat</p>
+        <p class="text-gray-600">Mehmet Çalışkan</p>
+        <div class="text-lg text-pembe-400">
+          <p class="text-sm text-gray-600 flex justify-end mt-5">Oylama bırakın</p>
+          <div class="text-lg text-pembe-400">
+            <p class="text-sm text-gray-600 flex justify-end mt-5">Oylama bırakın</p>
+            <div class="flex justify-end">
+            <span class="cursor-pointer hover:text-pembe" @click="rate(1)">★</span>
+            <span class="cursor-pointer hover:text-pembe" @click="rate(2)">★</span>
+            <span class="cursor-pointer hover:text-pembe" @click="rate(3)">★</span>
+            <span class="cursor-pointer hover:text-pembe" @click="rate(4)">★</span>
+            <span class="cursor-pointer hover:text-pembe" @click="rate(5)">★</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- ! Card-2 -->
+  <div class="max-w-xs bg-white rounded-lg overflow-hidden relative group hover:bg-gray-300 hover:scale-110 transition-transform duration-300">
+      <img src="{% static "img/ders-card-2.jpg" %}" alt="Ders Video Kapak" class="w-full h-auto opacity-100 group-hover:opacity-50 transition-opacity">
+      <div class="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity group-hover:opacity-100">
+        <a href="{% url "videoPlayer" %}">
+          <svg xmlns="http://www.w3.org/2000/svg" class="my-auto w-16 h-16 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3l14 9-14 9V3z" />
+          </svg>
+        </a>
+      </div>
+      <div class="p-4">
+        <h2 class="text-lg font-bold">Front End Development</h2>
+        <p class="text-black font-bold">120 Saat</p>
+        <p class="text-sm text-gray-600">Cemil Emre Aras</p>
+        <div class="text-lg text-pembe-400">
+          <p class="text-sm text-gray-600 flex justify-end mt-5">Oylama bırakın</p>
+          <div class="flex justify-end">
+          <span class="cursor-pointer hover:text-pembe" @click="rate(1)">★</span>
+          <span class="cursor-pointer hover:text-pembe" @click="rate(2)">★</span>
+          <span class="cursor-pointer hover:text-pembe" @click="rate(3)">★</span>
+          <span class="cursor-pointer hover:text-pembe" @click="rate(4)">★</span>
+          <span class="cursor-pointer hover:text-pembe" @click="rate(5)">★</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- ! Card-3 -->
+  <div class="max-w-xs bg-white rounded-lg overflow-hidden relative group hover:bg-gray-300 hover:scale-110 transition-transform duration-300">
+      <img src="{% static "img/ders-card-3.png" %}" alt="Ders Video Kapak" class="w-full h-auto opacity-100 group-hover:opacity-50 transition-opacity">
+      <div class="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity group-hover:opacity-100">
+        <a href="{% url "videoPlayer" %}">
+          <svg xmlns="http://www.w3.org/2000/svg" class="my-auto w-16 h-16 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3l14 9-14 9V3z" />
+          </svg>
+        </a>
+      </div>
+      <div class="p-4">
+        <h2 class="text-lg font-bold">JavaScript</h2>
+        <p class="text-black font-bold">120 Saat</p>
+        <p class="text-sm text-gray-600">Mehmet Çalışkan</p>
+        <div class="text-lg text-pembe-400">
+          <p class="text-sm text-gray-600 flex justify-end mt-5">Oylama bırakın</p>
+          <div class="flex justify-end">
+          <span class="cursor-pointer hover:text-pembe" @click="rate(1)">★</span>
+          <span class="cursor-pointer hover:text-pembe" @click="rate(2)">★</span>
+          <span class="cursor-pointer hover:text-pembe" @click="rate(3)">★</span>
+          <span class="cursor-pointer hover:text-pembe" @click="rate(4)">★</span>
+          <span class="cursor-pointer hover:text-pembe" @click="rate(5)">★</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- ! Card-4 -->
+  <div class="max-w-xs bg-white rounded-lg overflow-hidden relative group hover:bg-gray-300 hover:scale-110 transition-transform duration-300">
+      <img src="{% static "img/ders-card-4.jpg" %}" alt="Ders Video Kapak" class="w-full h-auto opacity-100 group-hover:opacity-50 transition-opacity">
+      <div class="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity group-hover:opacity-100">
+        <a href="{% url "videoPlayer" %}">
+          <svg xmlns="http://www.w3.org/2000/svg" class="my-auto w-16 h-16 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3l14 9-14 9V3z" />
+          </svg>
+        </a>
+      </div>
+      <div class="p-4">
+        <h2 class="text-lg font-bold">Back End Development</h2>
+        <p class="text-black font-bold">120 Saat</p>
+        <p class="text-sm text-gray-600">Fırat Dalkılıç</p>
+        <div class="text-lg text-pembe-400">
+          <p class="text-sm text-gray-600 flex justify-end mt-5">Oylama bırakın</p>
+          <div class="flex justify-end">
+          <span class="cursor-pointer hover:text-pembe" @click="rate(1)">★</span>
+          <span class="cursor-pointer hover:text-pembe" @click="rate(2)">★</span>
+          <span class="cursor-pointer hover:text-pembe" @click="rate(3)">★</span>
+          <span class="cursor-pointer hover:text-pembe" @click="rate(4)">★</span>
+          <span class="cursor-pointer hover:text-pembe" @click="rate(5)">★</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- ! Card-5 -->
+  <div class="max-w-xs bg-white rounded-lg overflow-hidden relative group hover:bg-gray-300 hover:scale-110 transition-transform duration-300">
+      <img src="{% static "img/ders-card-5.png" %}" alt="Ders Video Kapak" class="w-full h-auto opacity-100 group-hover:opacity-50 transition-opacity">
+      <div class="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity group-hover:opacity-100">
+        <a href="{% url "videoPlayer" %}">
+          <svg xmlns="http://www.w3.org/2000/svg" class="my-auto w-16 h-16 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3l14 9-14 9V3z" />
+          </svg>
+        </a>
+      </div>
+      <div class="p-4">
+        <h2 class="text-lg font-bold">HTML-CSS</h2>
+        <p class="text-black font-bold">120 Saat</p>
+        <p class="text-sm text-gray-600">Cemil Emre Aras</p>
+        <div class="text-lg text-pembe-400">
+          <p class="text-sm text-gray-600 flex justify-end mt-5">Oylama bırakın</p>
+          <div class="flex justify-end">
+          <span class="cursor-pointer hover:text-pembe" @click="rate(1)">★</span>
+          <span class="cursor-pointer hover:text-pembe" @click="rate(2)">★</span>
+          <span class="cursor-pointer hover:text-pembe" @click="rate(3)">★</span>
+          <span class="cursor-pointer hover:text-pembe" @click="rate(4)">★</span>
+          <span class="cursor-pointer hover:text-pembe" @click="rate(5)">★</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- ! Card-6 -->
+  <div class="max-w-xs bg-white rounded-lg overflow-hidden relative group hover:bg-gray-300 hover:scale-110 transition-transform duration-300">
+      <img src="{% static "img/ders-card-6.jpg" %}" alt="Ders Video Kapak" class="w-full h-auto opacity-100 group-hover:opacity-50 transition-opacity">
+      <div class="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity group-hover:opacity-100">
+        <a href="{% url "videoPlayer" %}">
+          <svg xmlns="http://www.w3.org/2000/svg" class="my-auto w-16 h-16 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3l14 9-14 9V3z" />
+          </svg>
+        </a>
+      </div>
+      <div class="p-4">
+        <h2 class="text-l font-bold">Python-Django</h2>
+        <p class="text-black font-bold">120 Saat</p>
+        <p class="text-sm text-gray-600">Cemil Emre Aras</p>
+        <div class="text-lg text-pembe-400">
+          <p class="text-sm text-gray-600 flex justify-end mt-5">Oylama bırakın</p>
+          <div class="flex justify-end">
+          <span class="cursor-pointer hover:text-pembe" @click="rate(1)">★</span>
+          <span class="cursor-pointer hover:text-pembe" @click="rate(2)">★</span>
+          <span class="cursor-pointer hover:text-pembe" @click="rate(3)">★</span>
+          <span class="cursor-pointer hover:text-pembe" @click="rate(4)">★</span>
+          <span class="cursor-pointer hover:text-pembe" @click="rate(5)">★</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- ! Card-7 -->
+  <div class="max-w-xs bg-white rounded-lg overflow-hidden relative group hover:bg-gray-300 hover:scale-110 transition-transform duration-300">
+      <img src="{% static "img/ders-card-7.png" %}" alt="Ders Video Kapak" class="w-full h-auto opacity-100 group-hover:opacity-50 transition-opacity">
+      <div class="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity group-hover:opacity-100">
+        <a href="{% url "videoPlayer" %}">
+          <svg xmlns="http://www.w3.org/2000/svg" class="my-auto w-16 h-16 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3l14 9-14 9V3z" />
+          </svg>
+        </a>
+      </div>
+      <div class="p-4">
+        <h2 class="text-lg font-bold">React</h2>
+        <p class="text-black font-bold">120 Saat</p>
+        <p class="text-sm text-gray-600">Mehmet Çalışkan</p>
+        <div class="text-lg text-pembe-400">
+          <p class="text-sm text-gray-600 flex justify-end mt-5">Oylama bırakın</p>
+          <div class="flex justify-end">
+          <span class="cursor-pointer hover:text-pembe" @click="rate(1)">★</span>
+          <span class="cursor-pointer hover:text-pembe" @click="rate(2)">★</span>
+          <span class="cursor-pointer hover:text-pembe" @click="rate(3)">★</span>
+          <span class="cursor-pointer hover:text-pembe" @click="rate(4)">★</span>
+          <span class="cursor-pointer hover:text-pembe" @click="rate(5)">★</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- ! Card-8 -->
+  <div class="max-w-xs bg-white rounded-lg overflow-hidden relative group hover:bg-gray-300 hover:scale-110 transition-transform duration-300">
+      <img src="{% static "img/ders-card-8.jpg" %}" alt="Ders Video Kapak" class="w-full h-auto opacity-100 group-hover:opacity-50 transition-opacity">
+      <div class="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity group-hover:opacity-100">
+        <a href="{% url "videoPlayer" %}">
+          <svg xmlns="http://www.w3.org/2000/svg" class="my-auto w-16 h-16 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3l14 9-14 9V3z" />
+          </svg>
+        </a>
+      </div>
+      <div class="p-4">
+        <h2 class="text-lg font-bold">HTML-CSS</h2>
+        <p class="text-black font-bold">120 Saat</p>
+        <p class=" text-sm text-gray-600">Fırat Dalkılıç</p>
+        <div class="text-lg text-pembe-400">
+          <p class="text-sm text-gray-600 flex justify-end mt-5">Oylama bırakın</p>
+          <div class="flex justify-end">
+          <span class="cursor-pointer hover:text-pembe" @click="rate(1)">★</span>
+          <span class="cursor-pointer hover:text-pembe" @click="rate(2)">★</span>
+          <span class="cursor-pointer hover:text-pembe" @click="rate(3)">★</span>
+          <span class="cursor-pointer hover:text-pembe" @click="rate(4)">★</span>
+          <span class="cursor-pointer hover:text-pembe" @click="rate(5)">★</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  
+  <!-- ! Öneriler Carousel -->
+  
+  <div class="bg-gradient-to-r from-pembe to-lacivert carousel xl:w-[96rem] lg:w-[72rem] md:w-[54rem] sm:w-[42rem] px-16 py-8 bg-opacity-60 rounded-3xl mt-20 mx-auto">
+    <h1 class="text-3xl text-white animate-pulse duration-100 text-center mb-10">Sizin için önerilenler</h1>
+    <div class="carousel__track" data-carousel-el="track-1">
+        <div class="carousel__slide">
+            <ul class="slide-group grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+  
+                <li class="slide-item glide__slide">
+                    <div class="p-4 shadow-lg transition-all duration-700 hover:scale-110">
+                        <img src="{% static "img/ders-card-2.jpg" %}" class="w-68 h-40 object-cover" alt="JavaScript">
+                        <span class="text-white text-lg font-bold">
+                            HTML-CSS
+                        </span>
+                        <p class="text-white font-bold">120 Saat</p>
+                        <p class="text-sm text-white">Fırat Dalkılıç</p>
+                        <p class="text-white">Fiyat: $49.99</p>
+                        <div class="bg-mor hover:bg-white text-white hover:text-mor h-10 w-40 mt-4">
+                          <button class="px-4 py-2"><a href="{% url "sepet" %}"> Sepete Ekle </a>
+                          <i class="fas fa-shopping-cart cursor-pointer"></i>
+                          </button>
+                        </div>
+                    </div>
+                </li>
+  
+                <li class="slide-item glide__slide">
+                    <div class="p-4 shadow-lg transition-all duration-700 hover:scale-110">
+                        <img src="{% static "img/ders-card-7.png" %}" alt="HTML" class="w-68 h-40 object-cover">
+                        <span class="text-white text-lg font-bold">
+                            React
+                        </span>
+                        <p class="text-white font-bold">120 Saat</p>
+                        <p class="text-sm text-white">Fırat Dalkılıç</p>
+                        <p class="text-white">Fiyat: $49.99</p>
+                        <div class="bg-mor hover:bg-white text-white hover:text-mor h-10 w-40 mt-4">
+                          <button class="px-4 py-2"><a href="{% url "sepet" %}"> Sepete Ekle </a>
+                          <i class="fas fa-shopping-cart cursor-pointer"></i>
+                          </button>
+                        </div>
+                    </div>
+                </li>
+  
+                <li class="slide-item glide__slide">
+                    <div class="p-4 shadow-lg transition-all duration-700 hover:scale-110">
+                        <img src="{% static "img/ders-card-6.jpg" %}" class="w-68 h-40 object-cover" alt="CSS">
+                        <span class="text-white text-lg font-bold">
+                            Python-Django
+                        </span>
+                        <p class="text-white font-bold">120 Saat</p>
+                        <p class="text-sm text-white">Fırat Dalkılıç</p>
+                        <p class="text-white">Fiyat: $49.99</p>
+                        <div class="bg-mor hover:bg-white text-white hover:text-mor h-10 w-40 mt-4">
+                          <button class="px-4 py-2"><a href="{% url "sepet" %}"> Sepete Ekle </a>
+                          <i class="fas fa-shopping-cart cursor-pointer"></i>
+                          </button>
+                        </div>
+                    </div>
+                </li>
+  
+              <li class="slide-item glide__slide">
+                  <div class="p-4 shadow-lg transition-all duration-700 hover:scale-110">
+                      <img src="{% static "img/ders-card-7.png" %}" alt="HTML" class="w-68 h-40 object-cover">
+                      <span class="text-white text-lg font-bold">
+                          React
+                      </span>
+                      <p class="text-white font-bold">120 Saat</p>
+                      <p class="text-sm text-white">Fırat Dalkılıç</p>
+                      <p class="text-white">Fiyat: $49.99</p>
+                      <div class="bg-mor hover:bg-white text-white hover:text-mor h-10 w-40 mt-4">
+                        <button class="px-4 py-2"><a href="{% url "sepet" %}"> Sepete Ekle </a>
+                        <i class="fas fa-shopping-cart cursor-pointer"></i>
+                        </button>
+                      </div>
+                  </div>
+              </li>
+  
+              <li class="slide-item glide__slide">
+                  <div class="p-4 shadow-lg transition-all duration-700 hover:scale-110">
+                      <img src="{% static "img/ders-card-6.jpg" %}" class="w-68 h-40 object-cover" alt="CSS">
+                      <span class="text-white text-lg font-bold">
+                          Python-Django
+                      </span>
+                      <p class="text-white font-bold">120 Saat</p>
+                      <p class="text-sm text-white">Fırat Dalkılıç</p>
+                      <p class="text-white">Fiyat: $49.99</p>
+                      <div class="bg-mor hover:bg-white text-white hover:text-mor h-10 w-40 mt-4">
+                        <button class="px-4 py-2"><a href="{% url "sepet" %}"> Sepete Ekle </a>
+                        <i class="fas fa-shopping-cart cursor-pointer"></i>
+                        </button>
+                      </div>
+                  </div>
+              </li>
+            </ul>
+        </div>
+    </div>
+    <div class="carousel__arrows flex justify-between mt-20">
+        <button class="carousel__arrow carousel__arrow--left-1 left-4 duration-300 ease-in-out">
+            <div class="h-9 w-9 bg-gradient-to-t from-mavi via-pembe to-mavi rounded-xl flex justify-center items-center my-auto p-4 shadow-lg transition-all duration-700 hover:scale-110">
+                <i class="fas fa-angle-left text-2xl text-black"></i>
+            </div>
+        </button>
+        <button class="carousel__arrow carousel__arrow--right-1 right-4 duration-300 ease-in-out">
+            <div class="h-9 w-9 bg-gradient-to-t from-mavi via-pembe to-mavi rounded-xl flex justify-center items-center my-auto p-4 shadow-lg transition-all duration-700 hover:scale-110">
+                <i class="fas fa-angle-right text-2xl text-black"></i>
+            </div>
+        </button>
+    </div>
+  </div>
+  
+  
+  <!-- ! Sık Arananlar Carousel -->
+  
+  <div class="bg-gradient-to-r from-pembe to-lacivert carousel xl:w-[96rem] lg:w-[72rem] md:w-[54rem] sm:w-[42rem] px-16 py-8 bg-opacity-60 rounded-3xl mt-20 mx-auto">
+    <h1 class="text-3xl text-white animate-pulse duration-100 text-center mb-10">Sık Aranan Başlıklar</h1>
+    <div class="carousel__track" data-carousel-el="track-2">
+        <div class="carousel__slide">
+            <ul class="slide-group grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <li class="slide-item glide__slide">
+                  <a href="#">
+                    <div class="rounded-2xl bg-lacivert hover:bg-white text-white hover:text-lacivert p-4 shadow-lg transition-all duration-700 hover:scale-110">
+                      <span class="text-lg font-bold">
+                            <a href="{% url "egitimlerimiz" %}"> HTML-CSS </a>
+                        </span>
+                    </div>
+                  </a>
+                </li>
+              
+  
+                <li class="slide-item glide__slide">
+                  <a href="#">
+                    <div class="rounded-2xl bg-lacivert hover:bg-white text-white hover:text-lacivert p-4 shadow-lg transition-all duration-700 hover:scale-110">
+                        <span class="text-lg font-bold">
+                            <a href="{% url "egitimlerimiz" %}">React</a>
+                        </span>
+                    </div>
+                  </a>
+                </li>
+  
+                <li class="slide-item glide__slide">
+                  <a href="#">
+                    <div class="rounded-2xl bg-lacivert hover:bg-white text-white hover:text-lacivert p-4 shadow-lg transition-all duration-700 hover:scale-110">
+                      <span class="text-lg font-bold">
+                        <a href="{% url "egitimlerimiz" %}">Python-Django </a>
+                        </span>
+                    </div>
+                    </a>
+                </li>
+  
+                <li class="slide-item glide__slide">
+                  <a href="#">
+                    <div class="rounded-2xl bg-lacivert hover:bg-white text-white hover:text-lacivert p-4 shadow-lg transition-all duration-700 hover:scale-110">
+                      <span class="text-lg font-bold">
+                            <a href="{% url "egitimlerimiz" %}"> Full Stack Development </a>
+                        </span>
+                    </div>
+                  </a>
+                </li>
+  
+                <li class="slide-item glide__slide">
+                  <a href="#">
+                    <div class="rounded-2xl bg-lacivert hover:bg-white text-white hover:text-lacivert p-4 shadow-lg transition-all duration-700 hover:scale-110">
+                      <span class="text-lg font-bold">
+                        <a href="{% url "egitimlerimiz" %}"> Siber Güvenlik </a>
+                      </span>
+                  </div>
+                </a>
+              </li>
+  
+              <li class="slide-item glide__slide">
+                <a href="#">
+                  <div class="rounded-2xl bg-lacivert hover:bg-white text-white hover:text-lacivert p-4 shadow-lg transition-all duration-700 hover:scale-110">
+                    <span class="text-lg font-bold">
+                        <a href="{% url "egitimlerimiz" %}">  Yapay Zeka </a>
+                      </span>
+                  </div>
+                </a>
+              </li>
+            </ul>
+        </div>
+    </div>
+    <div class="carousel__arrows flex justify-between mt-20">
+        <button class="carousel__arrow carousel__arrow--left-2 left-4 duration-300 ease-in-out">
+            <div class="h-9 w-9 bg-gradient-to-t from-mavi via-pembe to-mavi rounded-xl flex justify-center items-center my-auto p-4 shadow-lg transition-all duration-700 hover:scale-110">
+                <i class="fas fa-angle-left text-2xl text-black"></i>
+            </div>
+        </button>
+        <button class="carousel__arrow carousel__arrow--right-2 right-4 duration-300 ease-in-out">
+            <div class="h-9 w-9 bg-gradient-to-t from-mavi via-pembe to-mavi rounded-xl flex justify-center items-center my-auto p-4 shadow-lg transition-all duration-700 hover:scale-110">
+                <i class="fas fa-angle-right text-2xl text-black"></i>
+            </div>
+        </button>
+    </div>
+  </div>
+  
+  
+  </div>
+  
+  {% include "partials/_footer.html" %}  
+  {% endblock content %}
+
+  
+  {% block script %}
+
+  
+  <script> 
+    AOS.init(); 
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>    
+    <script src="https://kit.fontawesome.com/53467607bb.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+    
+      // ! Navbar
+    window.addEventListener('scroll', function () {
+      const navbar = document.querySelector('nav');
+      if (window.scrollY > 0) {
+        navbar.classList.remove('bg-gradient-to-t', 'from-lacivert', 'via-mavi', 'to-mor')
+        navbar.classList.add('bg-gradient-to-r', 'from-lacivert', 'via-mavi', 'to-mor');
+        navbar.classList.add('fixed', 'top-0', 'left-0', 'w-full', 'z-10'); // Navbar'ı sabitleyin
+      } else {
+        navbar.classList.add('bg-gradient-to-t', 'from-lacivert', 'via-mavi', 'to-mor');
+        navbar.classList.remove('fixed', 'top-0', 'left-0', 'w-full', 'z-10'); // Navbar'ı çözün
+      }
+    });
+    
+    document.addEventListener("DOMContentLoaded", function() {
+      const searchIcon = document.getElementById("search-icon");
+      const searchBar = document.getElementById("search-bar");
+    
+      searchIcon.addEventListener("click", function() {
+          if (searchBar.classList.contains("hidden")) {
+              searchBar.classList.remove("hidden");
+          } else {
+              searchBar.classList.add("hidden");
+          }
+      });
+    });
+    
+    const searchIcon = document.querySelector('.fa-search');
+    const searchForm = document.querySelector('#search-form');
+    
+    searchIcon.addEventListener('click', function() {
+      searchForm.classList.toggle('hidden');
+    });
+    
+    function toggleLanguageDropdown() {
+      var dropdown = document.getElementById("language-dropdown-menu");
+      dropdown.classList.toggle("hidden");
+    }
+    
+    function toggleMobileMenu() {
+      var mobileMenu = document.getElementById("navbar-language");
+      mobileMenu.classList.toggle("hidden");
+    }
+    
+    var languageDropdownToggle = document.querySelector("[data-dropdown-toggle=language-dropdown-menu]");
+    languageDropdownToggle.addEventListener("click", toggleLanguageDropdown);
+    
+    var mobileMenuToggle = document.querySelector("[data-collapse-toggle=navbar-language]");
+    mobileMenuToggle.addEventListener("click", toggleMobileMenu);
+    
+    
+    // ! Öğrenci Girişi Dropdown
+    const userIcon = document.getElementById("userIcon");
+    const userMenu = document.getElementById("userMenu");
+    
+    userIcon.addEventListener("mouseenter", () => {
+        userMenu.classList.remove("hidden"); 
+    });
+    
+    userIcon.addEventListener("mouseleave", () => {
+        userMenu.classList.add("hidden"); 
+    });
+    
+    
+    // ! Öğrenci Girişi Carousel
+    document.addEventListener("DOMContentLoaded", function () {
+      // İlk slider için elemanları seç
+      const track1 = document.querySelector('[data-carousel-el="track-1"]');
+      const slides1 = track1.querySelectorAll('.slide-item');
+      const prevButton1 = document.querySelector('.carousel__arrow--left-1');
+      const nextButton1 = document.querySelector('.carousel__arrow--right-1');
+    
+      // İkinci slider için elemanları seç
+      const track2 = document.querySelector('[data-carousel-el="track-2"]');
+      const slides2 = track2.querySelectorAll('.slide-item');
+      const prevButton2 = document.querySelector('.carousel__arrow--left-2');
+      const nextButton2 = document.querySelector('.carousel__arrow--right-2');
+      
+      let currentIndex1 = 0;
+      let currentIndex2 = 0;
+      const slidesPerPage = 4;
+    
+      const maxIndex1 = Math.ceil(slides1.length / slidesPerPage) - 1;
+      const maxIndex2 = Math.ceil(slides2.length / slidesPerPage) - 1;
+      
+      function showSlide1(index) {
+        const start = index * slidesPerPage;
+        const end = start + slidesPerPage;
+        
+        slides1.forEach((slide, i) => {
+          if (i >= start && i < end) {
+            slide.style.display = "block";
+          } else {
+            slide.style.display = "none";
+          }
+        });
+      }
+      
+      function showSlide2(index) {
+        const start = index * slidesPerPage;
+        const end = start + slidesPerPage;
+        
+        slides2.forEach((slide, i) => {
+          if (i >= start && i < end) {
+            slide.style.display = "block";
+          } else {
+            slide.style.display = "none";
+          }
+        });
+      }
+      
+      showSlide1(currentIndex1);
+      showSlide2(currentIndex2);
+      
+      prevButton1.addEventListener("click", function () {
+        if (currentIndex1 > 0) {
+          currentIndex1--;
+          showSlide1(currentIndex1);
+        }
+      });
+      
+      nextButton1.addEventListener("click", function () {
+        if (currentIndex1 < maxIndex1) {
+          currentIndex1++;
+          showSlide1(currentIndex1);
+        }
+      });
+    
+      prevButton2.addEventListener("click", function () {
+        if (currentIndex2 > 0) {
+          currentIndex2--;
+          showSlide2(currentIndex2);
+        }
+      });
+      
+      nextButton2.addEventListener("click", function () {
+        if (currentIndex2 < maxIndex2) {
+          currentIndex2++;
+          showSlide2(currentIndex2);
+        }
+      });
+    });
+    </script>  
+{% endblock script %} {% endcomment %}

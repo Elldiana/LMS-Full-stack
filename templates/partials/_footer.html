@@ -1,0 +1,149 @@
+{% load static %}
+<footer class="mt-auto bg-mor">
+    <div class="container-fluid mx-auto my-3">
+
+      <!-- FOOTER TOP -->
+      <div class="grid my-auto text-center text-white sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-6">
+         
+        <!-- LOGO -->
+        <div onclick="window.location.href = 'index.html';" class="logo cursor-pointer flex justify-center sm:mx-auto ml-0 min-w-[270px] ">
+          <img class="lg:w-[150px] lg:h-[150px] lg:ml-0 md:mx-auto" src="{% static "img/neoslogo.png" %}" alt="">
+        </div>
+
+        <!-- Neos Yazılım Akademi -->
+        <div class="m-2 block lg:mx-[-50px] lg:w-[200px]">
+          <h1 class="underline decoration-solid decoration-pembe underline-offset-8 text-white mb-4 font-bold text-sm uppercase min-w-[200px] ">Neos Yazılım Akademi</h1>
+          <a class="block a-footer text-white hover:text-mavi text-sm" href="{% url "hakkimizda" %}">Biz Kimiz?</a>
+          <a class="block a-footer text-white hover:text-mavi text-sm" href="#">İş Ortaklığı</a>
+          <a class="block a-footer text-white hover:text-mavi text-sm" href="#">Kariyer</a>
+          <a class="block a-footer text-white hover:text-mavi text-sm" href="{% url "iletisim" %}">İletişim</a>
+          <a class="block a-footer text-white hover:text-mavi text-sm" href="#">Basında Biz</a>
+        </div>
+
+        <!-- Mobil Uygulamalar -->
+        <div class="m-2 max-h-[190px] lg:mx-[-20px] sm\:mx-auto lg:w-[200px] xl:min-w-[250px]">
+          <h1 class="underline decoration-solid decoration-pembe underline-offset-8 text-white mb-4 font-bold text-sm uppercase">mobil uygulama</h1>
+          <!-- Mobil Card -->
+          <div class=" max-h-[190px] sm:max-w-[400px] lg:max-w-[170px] xl:min-w-[250px] flex flex-col m-auto  w-[100%] rounded-[20px] bg-[#07102D] bg-gradient-to-tr from-[#07102D] to-[#3A3C54] border-solid border border-[#545A6A]  ">
+            <span class="small-text text-sm font-semibold text-[#488AEC]">Download Now!</span>
+            <span class="title text-white text-base font-normal my-[4px] mx-0">Download Our <br> Mobile App.</span>
+            <span class="desc text-[13px] text-[#9999A7] font-semibold my-[2px] mx-0">Get Neos Mobile From</span>
+          <div class="buttons flex items-center justify-center gap-[10px] mt-[5px] px-1">
+            <a target="_blank" href="https://play.google.com/store/apps?gl=TR&utm_source=emea_Med&utm_medium=hasem&utm_content=Nov2020&utm_campaign=Evergreen&pcampaignid=MKT-EDR-emea-tr-1001280-Med-hasem-ap-Evergreen-Nov2020-Text_Search_BKWS%7CONSEM_kwid_43700013293089260&gclid=CjwKCAjwseSoBhBXEiwA9iZtxrh0ILtqvFJQyCxrgmxYgte4AkdHiBGhbecnyVXSCuYHV3dyInEO-RoCbzMQAvD_BwE&gclsrc=aw.ds&pli=1" class="button flex items-center justify-evenly rounded-[10px] p-[6px] no-underline first:bg-[#488aec] first:shadow-[0_4px_6px_-1px_#488aec31,0_2px_4px_-1px_#488aec80] md:w-[7em] md:mb-1">
+              <span class="icon lg:mb-3 lg:mr-2 lg:w-[10px] lg:h-[10px]"><svg w-[100%] h-[100%] width="20" height="20" viewBox="0 0 34 34" fill="" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 28.9958V4.9125C4 4.07667 4.48167 3.34 5.19 3L19.1442 16.9542L5.19 30.9083C4.48167 30.5542 4 29.8317 4 28.9958ZM23.5642 21.3742L8.32083 30.1858L20.3483 18.1583L23.5642 21.3742ZM28.31 15.2683C28.7917 15.6508 29.1458 16.2458 29.1458 16.9542C29.1458 17.6625 28.8342 18.2292 28.3383 18.6258L25.0942 20.4958L21.5525 16.9542L25.0942 13.4125L28.31 15.2683ZM8.32083 3.7225L23.5642 12.5342L20.3483 15.75L8.32083 3.7225Z" fill="white"></path>
+          </svg></span>
+              <div class="button-text flex flex-col ml-2 google">
+                <!-- <span class="first:text-[12px] first:text-[#DBCEFD] font-semibold">Get it on</span> -->
+                <span class="text-white text-xs font-semibold">Google Play</span>
+              </div>
+            </a>
+            <a href="https://apps.apple.com/tr/app/udemy-online-video-courses/id562413829?l=tr" class="button flex items-center mb-1 justify-evenly rounded-[10px] p-[6px] no-underline last:shadow-[0_4px_6px_-1px_#0b162531,0_2px_4px_-1px] last:bg-white">
+              <span class="icon mb-3 mr-2 w-[10px] h-[10px]"><svg w-[100%] h-[100%] width="20" height="20" viewBox="0 0 34 34" fill="black" xmlns="http://www.w3.org/2000/svg">
+          <path d="M26.5058 27.625C25.33 29.3817 24.0833 31.0958 22.185 31.1242C20.2866 31.1667 19.6775 30.005 17.5241 30.005C15.3566 30.005 14.6908 31.0958 12.8916 31.1667C11.0358 31.2375 9.6333 29.2967 8.4433 27.5825C6.0208 24.0833 4.16497 17.6375 6.6583 13.3025C7.8908 11.1492 10.1008 9.78916 12.495 9.74666C14.3083 9.71833 16.0366 10.9792 17.1558 10.9792C18.2608 10.9792 20.3575 9.46333 22.5533 9.68999C23.4741 9.73249 26.0525 10.0583 27.71 12.495C27.5825 12.58 24.6358 14.3083 24.6641 17.8925C24.7066 22.1708 28.4183 23.6017 28.4608 23.6158C28.4183 23.715 27.8658 25.6558 26.5058 27.625ZM18.4166 4.95833C19.4508 3.78249 21.165 2.88999 22.5816 2.83333C22.7658 4.49083 22.1 6.16249 21.1083 7.35249C20.1308 8.55666 18.5158 9.49166 16.9291 9.36416C16.7166 7.73499 17.51 6.03499 18.4166 4.95833Z" fill=""></path>
+          </svg></span>
+              <div class="button-text flex flex-col ml-2 apple">
+                <!-- <span class="first:text-[12px] first:text-[#51576C] font-semibold">Download from</span> -->
+                <span class="text-black font-semibold text-xs ">App Store</span>
+              </div>
+            </a>
+          </div>
+          </div>
+        </div>
+
+        <!-- Güvenli alışveriş -->
+        <div class="m-2 ml-3">
+          <h1 class="underline decoration-solid decoration-pembe underline-offset-8 text-white mb-4 font-bold text-sm uppercase">Güvenli Alışveriş</h1>
+
+          <div class="grid my-auto gap-6 grid-cols-1 justify-items-center ">
+
+            <a href="#">
+              <img class="w-[60%] mx-auto" src="{% static "img/mastercard.png" %}" alt="">
+            </a>
+
+            <a class="my-auto" href="">
+              <img class="w-[50%] mx-auto" src="{% static "img/troy.png" %}" alt="">
+            </a>
+
+            <a class="my-auto" href="">
+              <img class="w-[50%] mx-auto" src="{% static "img/visa.png" %}" alt="">
+            </a>
+
+            <!-- <a href="">
+              <img class="border border-white mt-auto md:w-[50%] mx-auto" src="img/americanexpress.png" alt="">
+            </a> -->
+            
+          </div>
+        </div>
+
+        <!-- Sosyal Medya -->
+  <div class="social m-2 mx-auto">
+    <h1 class="underline decoration-solid decoration-pembe underline-offset-8 text-white mb-4 font-bold text-sm uppercase">Bizi Takip Edin</h1>
+
+    <div class="main flex flex-col gap-1">
+      <div class="up flex flex-row gap-1">
+        
+        <!-- INSTAGRAM AREA -->
+        <a href="https://www.instagram.com/neos_yazilim/" target="_blank" class="card1 w-[50px] h-[50px] outline-none border-none bg-white rounded-[90px_5px_5px_5px] transition ease-in-out duration-200 shadow-md hover:cursor-pointer hover:scale-110 hover:bg-[#cc39a4] group">
+          <svg class="instagram my-[1em] ml-[0.7em] fill-[#cc39a4] group-hover:fill-white" fill-rule="nonzero" fill="#cc39a4" height="30px" width="30px" viewBox="0,0,256,256" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g style="mix-blend-mode: normal" text-anchor="none" font-size="none" font-weight="none" font-family="none" stroke-dashoffset="0" stroke-dasharray="" stroke-miterlimit="10" stroke-linejoin="miter" stroke-linecap="butt" stroke-width="1" stroke="none" fill-rule="nonzero"><g transform="scale(8.8)">
+            <path d="M11.46875,5c-3.55078,0 -6.46875,2.91406 -6.46875,6.46875v9.0625c0,3.55078 2.91406,6.46875 6.46875,6.46875h9.0625c3.55078,0 6.46875,-2.91406 6.46875,-6.46875v-9.0625c0,-3.55078 -2.91406,-6.46875 -6.46875,-6.46875zM11.46875,7h9.0625c2.47266,0 4.46875,1.99609 4.46875,4.46875v9.0625c0,2.47266 -1.99609,4.46875 -4.46875,4.46875h-9.0625c-2.47266,0 -4.46875,-1.99609 -4.46875,-4.46875v-9.0625c0,-2.47266 1.99609,-4.46875 4.46875,-4.46875zM21.90625,9.1875c-0.50391,0 -0.90625,0.40234 -0.90625,0.90625c0,0.50391 0.40234,0.90625 0.90625,0.90625c0.50391,0 0.90625,-0.40234 0.90625,-0.90625c0,-0.50391 -0.40234,-0.90625 -0.90625,-0.90625zM16,10c-3.30078,0 -6,2.69922 -6,6c0,3.30078 2.69922,6 6,6c3.30078,0 6,-2.69922 6,-6c0,-3.30078 -2.69922,-6 -6,-6zM16,12c2.22266,0 4,1.77734 4,4c0,2.22266 -1.77734,4 -4,4c-2.22266,0 -4,-1.77734 -4,-4c0,-2.22266 1.77734,-4 4,-4z"></path></g></g>
+          </svg>
+        </a>
+
+        <!-- FACEBOOK AREA -->
+        <a href="https://www.facebook.com/neosyazilimakademi/" target="_blank" class="card2 w-[50px] h-[50px] outline-none border-none bg-white rounded-[5px_90px_5px_5px] transition ease-in-out duration-200 shadow-md hover:cursor-pointer hover:scale-110 hover:bg-[#1877f2] group">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="30" height="30" class="facebook my-[1em] ml-[0.5em] fill-[#03A9F4] group-hover:fill-white">
+            <path d="M9.19795 21.5H13.198V13.4901H16.8021L17.198 9.50977H13.198V7.5C13.198 6.94772 13.6457 6.5 14.198 6.5H17.198V2.5H14.198C11.4365 2.5 9.19795 4.73858 9.19795 7.5V9.50977H7.19795L6.80206 13.4901H9.19795V21.5Z"></path>
+          </svg>
+        </a>
+      </div>
+
+      <div class="down flex flex-row gap-1">
+        <!-- LINKEDIN AREA -->
+        <button class="card3 w-[50px] h-[50px] outline-none border-none bg-white rounded-[5px_5px_5px_90px] transition ease-in-out duration-200 shadow-xl hover:cursor-pointer hover:scale-110 hover:bg-[#0274B3] group">
+          <svg class="linkedin mt-[-.2em] ml-[1em] fill-[#0274B3] group-hover:fill-white" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+          </svg>
+        </button>
+
+        <!-- TWITTER AREA -->
+        <a href="https://twitter.com/neos_yazilim" target="_blank" class="card4 w-[50px] h-[50px] outline-none border-none bg-white rounded-[5px_5px_90px_5px] shadow-md transition ease-in-out duration-200 hover:cursor-pointer hover:scale-110 hover:bg-black group">
+          <svg class="twitter mt-[0.7em] ml-[0.7em] fill-[#000] group-hover:fill-white" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" version="1.1">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- GITHUB -->
+    
+    <div class="github flex justify-center mt-2">
+      <a target="_blank" href="https://github.com/ardasalvarlilar?tab=repositories" class="flex gap-2 cursor-pointer text-white text-sm font-semibold bg-gradient-to-r from-gray-800 to-black px-4 py-2 rounded-full border border-gray-600 hover:scale-105 duration-200 hover:text-gray-500 hover:border-gray-800 hover:from-black hover:to-gray-900">
+        <svg viewBox="0 0 24 24" height="20" width="20" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#FFFFFF" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path>
+        </svg>
+        Github
+      </a>
+    </div>
+  </div>
+
+    <!-- Yardım Masası -->
+    <div class="m-2">
+      <h1 class="underline decoration-solid decoration-pembe underline-offset-8 text-white mb-4 font-bold text-sm uppercase">Yardım Masası</h1>
+      <a class="block a-footer text-white hover:text-mavi text-sm" href="#">Sıkça Sorulan Sorular</a>
+      <a class="block a-footer text-white hover:text-mavi text-sm" href="#">KVKK Aydınlatma Metni</a>
+      <a class="block a-footer text-white hover:text-mavi text-sm" href="#">Gizlilik Politikası</a>
+      <a class="block a-footer text-white hover:text-mavi text-sm" href="#">Koşullar</a>
+      <a class="block a-footer text-white hover:text-mavi text-sm" href="#">Yardım ve Destek</a>
+    </div>         
+  </div>
+
+  <hr class="border-1 border-pembe mt-2"> 
+  </div>
+  
+    <!-- FOOTER BOTTOM -->
+  <div class="copyright mx-auto text-white">
+    <p class="text-center text-white">&#169; 2023 Neos Software Academy,Inc. </p>
+  </div>
+   
+</footer>

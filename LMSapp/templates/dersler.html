@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+ 
+{% block content %}
+<!-- Resim -->
+<div class="max-w-full shadow-2xl mx-auto text-center relative">
+    <img style="height: 300px; width: 100%;" class="mx-auto" src="{% static "img/bann.jpg" %}" alt="">
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pr-0 sm:pr-10">
+        <h2 class="text-2xl leading-9 font-bold tracking-tight border border-indigo-600 p-1 md:p-4 rounded-lg bg-indigo-400 text-indigo-700 md:text-5xl sm:leading-10">
+          {{ dersler.first.egitim_alt_kategori }}
+        </h2>
+        <div class="flex justify-center mt-4">
+        </div>
+    </div>
+</div>
+ 
+
+<!-- Cardlar -->
+<div class="py-16">  
+<div class="container xl:w-4/6 m-auto px-6 text-gray-600 md:px-12 xl:px-6"> 
+    <div class="grid gap-12 ">
+      <!-- Card 1 -->
+      {% for ders in dersler %}
+        <div class="p-1 rounded-xl group md:flex space-x-3 md:space-x-6 bg-white shadow-xl">
+          <div class="relative">
+            <img src="{{ders.egitim_image.url}}" class="rounded-xl object-contain object-cover h-80 w-96 object-top transition duration-500 group-hover:rounded-xl" loading="lazy" alt="Colors" />
+          <p class="absolute top-0 bg-green-400 text-green-800 font-semibold py-1 px-3 rounded-br-lg rounded-tl-lg">{{ders.egitim_ucreti}} TL</p>
+          </div>
+          <div class="w-full md:w-7/12 pl-0 p-5">
+            <div class="space-y-2">
+              <div class="space-y-4">
+                  <div class="mb-3 text-xl">
+                      <span class="p-1 text-sm bg-green-200 text-green-800 rounded">{{ders.egitim_seviyesi}}</span>
+                  </div>
+                  <h1 class="mt-4 text-gray-800 text-2xl font-bold cursor-pointer">{{ders.egitimler_title}}</h1>
+                  <div class="flex space-x-1 items-center">
+                      <i class="fa-regular fa-clock h-6 w-6 text-lacivert"></i>
+                      <p class="mb-1.5">{{ders.egitim_suresi}}</p>
+                  </div>
+                  <div class="flex space-x-1 items-center">
+                      <i class="fa-regular fa-user h-6 w-6 text-lacivert"></i>
+                      <a href="{% url "egitmen" ders.egitmen_id ders.egitmen.slug %}"><p class="mb-1.5">{{ders.egitmen.get_full_name}}</p></a>
+                  </div>
+                  <div class="flex space-x-1 items-center">
+                      <i class="fa-solid fa-code h-6 w-6 text-lacivert"></i>
+                      <p class="mb-1.5" >{{ders.egitim_alt_kategori}}</p>
+                  </div>
+                  </div>
+                  <form method="POST">
+                  {% csrf_token %}
+                    <input type="hidden" name="egitimId" value="{{ders.id}}">
+                    <button type="submit" class="mt-4 text-xl w-full text-white bg-indigo-600 py-2 rounded-xl shadow-lg">Sepete Ekle</button>
+                  </form>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+
+      <!-- Card 2 -->
+      {% comment %} <div class="p-1 rounded-xl group md:flex space-x-3 md:space-x-6 bg-white shadow-xl">
+        <div class="relative">
+        <img src="{% static "img/CSSt.jpg" %}" class="rounded-xl sm:h-full w-full object-cover object-top transition duration-500 group-hover:rounded-xl" loading="lazy"  height="667" alt="Colors" />
+        <p class="absolute top-0 bg-green-400 text-green-800 font-semibold py-1 px-3 rounded-br-lg rounded-tl-lg">{{egitimler.fiyat}}</p>
+        <p class="absolute top-0 right-0 bg-green-400 text-green-800 font-semibold py-1 px-3 rounded-tr-lg rounded-bl-lg">%10 Indirim</p>
+        </div>
+        <div class="w-full md:w-7/12 pl-0 pr-6  p-2">
+          <div class="space-y-2">
+            <div class="space-y-4">
+                <div class="mb-3 text-xl">
+                    <span class="p-1 text-sm bg-green-200 text-green-800 rounded">Temel seviye</span>
+                </div>
+                <h1 class="mt-4 text-gray-800 text-2xl font-bold cursor-pointer">Temel seviye HTML dersi</h1>
+                <div class="flex space-x-1 items-center">
+                    <i class="fa-regular fa-clock h-6 w-6 text-indigo-600"></i>
+                    <p class="mb-1.5">2saat 34dk</p>
+                </div>
+                <div class="flex space-x-1 items-center">
+                    <i class="fa-regular fa-user h-6 w-6 text-indigo-600"></i>
+                   <a href="#"> <p class="mb-1.5">Fırat Dalkılıç</p></a>
+                </div>
+                <div class="flex space-x-1 items-center">
+                    <i class="fa-solid fa-code h-6 w-6 text-indigo-600"></i>
+                    <p class="mb-1.5" >CSS</p>
+                </div>
+                </div>
+                <button onclick="window.location.href='_card.html'" class="mt-4 text-xl w-full text-white bg-indigo-600 py-2 rounded-xl shadow-lg">Sepete Ekle</button>
+          </div>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="p-1 rounded-xl group md:flex space-x-3 md:space-x-6 bg-white shadow-xl">
+        <div class="relative">
+        <img src="{% static "img/js.jpg" %}" class="rounded-xl sm:h-full w-full object-cover object-top transition duration-500 group-hover:rounded-xl" loading="lazy"  height="667" alt="Colors" />
+        <p class="absolute top-0 bg-green-400 text-green-800 font-semibold py-1 px-3 rounded-br-lg rounded-tl-lg">{{egitimler.fiyat}}</p>
+        <p class="absolute top-0 right-0 bg-green-400 text-green-800 font-semibold py-1 px-3 rounded-tr-lg rounded-bl-lg">%10 Indirim</p>
+        </div>
+        <div class="w-full md:w-7/12 pl-0 p-5">
+          <div class="space-y-2">
+            <div class="space-y-4">
+                <div class="mb-3 text-xl">
+                    <span class="p-1 text-sm bg-green-200 text-green-800 rounded">Temel seviye</span>
+                </div>
+                <h1 class="mt-4 text-gray-800 text-2xl font-bold cursor-pointer">Temel seviye HTML dersi</h1>
+                <div class="flex space-x-1 items-center">
+                    <i class="fa-regular fa-clock h-6 w-6 text-indigo-600"></i>
+                    <p class="mb-1.5">2saat 34dk</p>
+                </div>
+                <div class="flex space-x-1 items-center">
+                    <i class="fa-regular fa-user h-6 w-6 text-indigo-600"></i>
+                    <a href="#"><p class="mb-1.5">Göksu Nur Akımsar</p></a>
+                </div>
+                <div class="flex space-x-1 items-center">
+                    <i class="fa-solid fa-code h-6 w-6 text-indigo-600"></i>
+                    <p class="mb-1.5" >HTML, CSS, JavaScript</p>
+                </div>
+                </div>
+                <button onclick="window.location.href='_card.html'" class="mt-4 text-xl w-full text-white bg-indigo-600 py-2 rounded-xl shadow-lg">Sepete Ekle</button>
+          </div>
+        </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="p-1 rounded-xl group md:flex space-x-3 md:space-x-6 bg-white shadow-xl">
+        <div class="relative">
+        <img src="{% static "img/Pythonjpg.jpg" %}" class="rounded-xl sm:h-full w-full object-cover object-top transition duration-500 group-hover:rounded-xl" loading="lazy"  height="667" alt="Colors" />
+        <p class="absolute top-0 bg-green-400 text-green-800 font-semibold py-1 px-3 rounded-br-lg rounded-tl-lg">{{egitimler.fiyat}} </p>
+        <p class="absolute top-0 right-0 bg-green-400 text-green-800 font-semibold py-1 px-3 rounded-tr-lg rounded-bl-lg">%10 Indirim</p>
+        </div>
+        <div class="w-full md:w-7/12 pl-0 p-5">
+          <div class="space-y-2">
+            <div class="space-y-4">
+                <div class="mb-3 text-xl">
+                    <span class="p-1 text-sm bg-green-200 text-green-800 rounded">Temel seviye</span>
+                </div>
+                <h1 class="mt-4 text-gray-800 text-2xl font-bold cursor-pointer">Temel seviye HTML dersi</h1>
+                <div class="flex space-x-1 items-center">
+                    <i class="fa-regular fa-clock h-6 w-6 text-indigo-600"></i>
+                    <p class="mb-1.5">2saat 34dk</p>
+                </div>
+                <div class="flex space-x-1 items-center">
+                    <i class="fa-regular fa-user h-6 w-6 text-indigo-600"></i>
+                    <a href="#"><p class="mb-1.5">Arda Şalvar</p></a>
+                </div>
+                <div class="flex space-x-1 items-center">
+                    <i class="fa-solid fa-code h-6 w-6 text-indigo-600"></i>
+                    <p class="mb-1.5" >HTML, CSS, JavaScript</p>
+                </div>
+                </div>
+                <button onclick="window.location.href='_card.html'" class="mt-4 text-xl w-full text-white bg-indigo-600 py-2 rounded-xl shadow-lg">Sepete Ekle</button>
+          </div>
+        </div>
+      </div> {% endcomment %}
+
+    </div>
+</div>
+</div>
+
+{% endblock content %}
+
+{% block script %}
+<script src="https://kit.fontawesome.com/b7aebaf495.js" crossorigin="anonymous"></script>
+{% endblock script %}

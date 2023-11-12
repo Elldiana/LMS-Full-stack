@@ -1,0 +1,113 @@
+{% extends "base2.html" %}
+{% load static %}
+
+{% block content %}
+
+{% include "partials/_navbar1.html" %}
+
+<div class="w-full md:flex md:justify-between mt-5">
+  <div class=" md:w-[25%] md:ml-4 md:mt-4 mb-2">
+    <form method="POST"  enctype="multipart/form-data">
+        {% csrf_token %}
+      <div class="bg-[#4d5499] shadow-lg p-8 rounded-lg mb-5">
+          <div class="mb-4 flex justify-center md:flex">
+              <!-- Profil resmini gösteren img etiketi -->
+              <img src="{{user.image.url}}" alt="Profil Resmi" class="w-20 h-20 object-cover rounded-lg shadow-md mb-2">
+              <h3 class="text-xl font-semibold ml-5 mt-5 text-white">{{user.first_name}}</h3>
+              <!-- <label for="profile-picture" class="block text-gray-600 font-medium">Profil Resmi</label> -->
+          </div>
+          <div class="file-field flex justify-center items-center">
+            {{imageForm.image}}
+          <!-- <input type="file" id="profile-picture" class="py-2 px-2 text-sm text-white mb-4 rounded border border-gray-300 focus:outline-none focus:border-blue-400" accept="image/*"> -->
+          </div>
+          <div class="text-right mr-5">
+              <!-- Butonu sağa almak için "text-right" sınıfını kullanıyoruz -->
+              <button type="submit" name="resim_kaydet" class="w-full md:w-auto bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-200">Kaydet</button>
+          </div>
+      </div>
+    </form>
+    <form action="" method="POST">
+        {% csrf_token %}
+      <div class="bg-[#4d5499] shadow-lg p-8 rounded-lg">
+          <h2 class="text-lg mb-4 text-white font-semibold">Hesaplar</h2>
+          <div class="mb-4 flex">
+              <!-- <label for="first-name" class="block text-gray-600 font-medium">Linkedin</label> -->
+              <i class="fa-brands fa-linkedin fa-2xl m-auto text-white"></i>
+              <input type="text" id="linkedin" class="w-full py-2 px-3 ml-2 border border-gray-300 rounded focus:outline-none focus:border-blue-400" value="">
+          </div>
+          <div class="mb-4 flex">
+              <!-- <label for="first-name" class="block text-gray-600 font-medium">GitHub</label> -->
+              <i class="fa-brands fa-github fa-2xl m-auto text-white"></i>
+              <input type="text" id="github" class="w-full py-2 px-3 ml-2 border border-gray-300 rounded focus:outline-none focus:border-blue-400" value="">
+          </div>
+          <div class="mb-4 flex">
+              <!-- <label for="first-name" class="block text-gray-600 font-medium">Facebook</label> -->
+              <i class="fa-brands fa-facebook fa-2xl m-auto text-white"></i>
+              <input type="text" id="facebook" class="w-full py-2 px-3 ml-2 border border-gray-300 rounded focus:outline-none focus:border-blue-400" value="">
+          </div>
+          <div class="mb-4 flex">
+              <!-- <label for="first-name" class="block text-gray-600 font-medium">İnstagram</label> -->
+              <i class="fa-brands fa-instagram fa-2xl m-auto text-white"></i>
+              <input type="text" id="instagram" class="w-full py-2 px-3 ml-2 border border-gray-300 rounded focus:outline-none focus:border-blue-400" value="">
+          </div>
+          <div class="mb-4 flex">
+              <!-- <label for="first-name" class="block text-gray-600 font-medium">Twitter</label> -->
+              <i class="fa-brands fa-twitter fa-2xl m-auto text-white"></i>
+              <input type="text" id="twitter" class="w-full py-2 px-3 ml-2 border border-gray-300 rounded focus:outline-none focus:border-blue-400" value="">
+          </div>
+          <div class="text-right">
+              <!-- Butonu sağa almak için "text-right" sınıfını kullanıyoruz -->
+              <button class="w-full md:w-auto bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-200">Kaydet</button>
+          </div>
+      </div>
+    </form>
+
+  </div>
+
+  
+<div class="md:w-[70%] md:mr-4 md:mt-4">
+    <form  method="POST">
+        {% csrf_token %}
+    <div class="bg-[#4d5499] shadow-lg p-8 rounded lg mb-5">
+      <h3 class="text-xl text-white mb-4 font-semibold">Genel Bilgiler</h3>
+      <div class="mb-4 flex flex-col">
+       
+
+
+          <label for="ad" class="block text-white font-medium">Ad</label>
+          {{editForm.first_name}}
+          <!-- <input type="text" name"first_name" id="ad" class="w-full py-2 px-3 border border-gray-300 rounded focus:outline-none focus:border-blue-400" value="{{user.first_name}}"> -->
+      </div>
+      <div class="mb-4 flex flex-col">
+          <label for="soyAd" class="block text-white font-medium">Soyad</label>
+        {{editForm.last_name}}
+          <!-- <input type="text" id="soyAd" class="w-full py-2 px-3 border border-gray-300 rounded focus:outline-none focus:border-blue-400" value="{{user.last_name}}"> -->
+      </div>
+      <div class="mb-4 flex flex-col">
+        <label for="kullaniciAdi" class="block text-white font-medium">Tc No</label>
+        {{editForm.tc}}
+        <!-- <input type="text" id="kullaniciAdi" class="w-full py-2 px-3 border border-gray-300 rounded focus:outline-none focus:border-blue-400" value="{{user.tc}}"> -->
+      </div>
+      <div class="mb-4 flex flex-col">
+          <label for="email" class="block text-white font-medium">E-Posta</label>
+        {{editForm.email}}
+          <!-- <input type="email" id="email" class="w-full py-2 px-3 border border-gray-300 rounded focus:outline-none focus:border-blue-400" value="{{user.email}}"> -->
+      </div>
+      <div class="mb-4 flex flex-col">
+          <label for="telefon" class="block text-white font-medium">Telefon</label>
+        {{editForm.phone_number}}
+          <!-- <input type="tel" id="telefon" class="w-full py-2 px-3 border border-gray-300 rounded focus:outline-none focus:border-blue-400" value="{{user.phone_number}}"> -->
+      </div>
+      <div class="mb-4 flex flex-col">
+          <label for="aciklama" class="block text-white font-medium">Açıklama</label>
+        {{editForm.bio}}
+          <!-- <textarea class="resize-none rounded px-3 py-5 focus:outline-none" name="aciklama" id="aciklama" cols="30" rows="10"></textarea> -->
+      </div>
+      <div class="text-right">
+          <!-- Butonu sağa almak için "text-right" sınıfını kullanıyoruz -->
+          <button type="submit" name="bilgi_kaydet" class="w-full md:w-auto bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-200">Kaydet</button>
+      </div>
+    </div>
+    </form>
+</div>
+{% endblock content %}
